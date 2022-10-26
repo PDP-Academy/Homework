@@ -22,14 +22,9 @@ internal class Program
         {
             PropertyNameCaseInsensitive = true
         };
-        var movie = JsonSerializer.Deserialize<Search>(contentString, option);
+        
 
-        var moviesList = movie.Movies;
-
-        foreach (var item in moviesList)
-        {
-            Console.WriteLine(item.Title);
-        }
+        
     }
 
     static void MainMenu()
@@ -46,16 +41,18 @@ internal class Program
         {
             case 1:
             {
-                break;
-            }
+                    SearchByTitle();       
+            } break;
+
             case 2:
             {
-                break;
-            }
+
+            } break;
+
             default:
             {
-                break;
-            }
+
+            } break;
         }
     }
     static void SearchByTitle()
@@ -86,8 +83,9 @@ internal class Program
 
         foreach (var item in moviesList)
         {
-            Console.WriteLine(item.Title);
+            Console.WriteLine("Title: " + item.Title);
         }
+        Console.WriteLine("Page: 1");
 
     }
 }
