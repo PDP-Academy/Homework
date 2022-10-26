@@ -1,2 +1,8 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿namespace LeaderConsole;
+class Prgram
+{
+    static void Main(string[] args)
+    {
+
+    }
+}
