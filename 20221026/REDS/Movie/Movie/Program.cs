@@ -14,7 +14,6 @@
             
         }
        
-      public 
         static void MenuTitle()
         {
             Console.WriteLine("1: View list of Movies"); // kinolar ro'yhatini ko'rish
