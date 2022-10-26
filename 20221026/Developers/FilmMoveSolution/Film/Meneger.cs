@@ -12,6 +12,5 @@ class Meneger
         var temp = client.GetAsync(URl).Result;
         var temp2 = temp.Content.ReadAsStringAsync().Result;
         return JsonSerializer.Deserialize<unknown>(temp2);
-        
     }
 }
