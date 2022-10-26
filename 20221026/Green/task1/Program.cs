@@ -103,9 +103,20 @@ internal class Program
     static void SortedToType()
     {
         string url = "https://www.omdbapi.com/?";
-        
+        string title = "s=";
+        string type = "type=";
+        string pageStr = "&page=";
+        string myKey = "&apikey=ca272312";
+
         List<Movie> movies = new List<Movie>();
-        List<Movie> series = new List<Movie>();
-        List<Movie> episode = new List<Movie>();
+        IManagerAPI managerAPI = new ManagerAPI();
+
+        Console.Write("title: ");
+        title += Console.ReadLine();
+        Console.WriteLine("1.Movie");
+        Console.WriteLine("2.");
+
+        
+
     }
 }
