@@ -1,6 +1,6 @@
 ﻿namespace Movie
 {
-    public class InfoOfMovie
+    public class Search
     { 
         public string Title { get; set; }
         public string Year { get; set; }
@@ -11,5 +11,6 @@
         {
             return $"'Title':'{Title}','Year':'{Year}','Imdb_Id':'{ImdbID}','Type':'{Type}','Poster':'{Poster}'";
         }
+
     }
 }
