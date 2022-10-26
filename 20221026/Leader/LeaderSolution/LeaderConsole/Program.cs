@@ -1,5 +1,5 @@
 ﻿namespace LeaderConsole;
-class Prgram
+public class Prgram
 {
     static void Main(string[] args)
     {
