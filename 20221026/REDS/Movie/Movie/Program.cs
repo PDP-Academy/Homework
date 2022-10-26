@@ -17,7 +17,11 @@
             Console.WriteLine(json);
 
         }
-        
+        static void Menu()
+        {
+            Console.WriteLine("Type buyich saralash");
+            Console.WriteLine("Title buyic");
+        }
 
         
 
