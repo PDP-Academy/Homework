@@ -35,7 +35,13 @@ class unknown
     public string Website { get; set; }
     public string Response { get; set; }
 
+    public override string ToString()
+    {
+        return base.ToString();
+    }
+
 }
+
 class rating
 {
     public string Source { get; set; }
