@@ -1,29 +1,4 @@
 ﻿Meneger meneger = new Meneger();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 static void SHow(List<Unknown  
     > list)
 {
