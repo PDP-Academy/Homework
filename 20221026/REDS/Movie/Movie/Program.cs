@@ -4,10 +4,11 @@
     {
         static void Main(string[] args)
         {
+            
 
             string s=Console.ReadLine();
             int i=int.Parse(Console.ReadLine());
-            string url = $"https://omdbapi.com/?s={s}&page={i}&apikey=d8c25eb8";
+            string url = $"https://omdbapi.com/?s={s}&apikey=d8c25eb8";
 
            
             HttpClient client = new HttpClient();
