@@ -1,7 +1,7 @@
 ﻿namespace Movie
 {
 
-    public class Root
+    public class Movie
     {
         public List<Search> Search { get; set; }
         public string TotalResults { get; set; }
