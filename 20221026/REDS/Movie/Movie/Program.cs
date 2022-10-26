@@ -22,8 +22,7 @@
                 switch(choose)
                 {
                     case 0:
-                        Console.Clear();
-                        Thread.Sleep(1000);
+                        Console.Clear();                       
                         return;
                     case 1:
                         Console.Clear();
@@ -74,8 +73,8 @@
         }
         static void Menu()
         {
-            Console.WriteLine("1: Sort By Type");
-            Console.WriteLine("2: Sort By Title");
+            Console.WriteLine("1: Sort By Title");
+            Console.WriteLine("2: Sort By Type");
             Console.WriteLine("0: Exit the Program");
             Console.Write("select a page: ");
         }
