@@ -25,7 +25,8 @@ Console.WriteLine(meneger.Search(""));
 
 
 
-static void SHow(List<string> list)
+static void SHow(List<Unknown  
+    > list)
 {
     for (int i = 0; i < list.Count; i++)
     {
