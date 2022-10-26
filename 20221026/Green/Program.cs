@@ -22,8 +22,8 @@ internal class Program
         {
             PropertyNameCaseInsensitive = true
         };
-        
 
+        MainMenu();
         
     }
 
