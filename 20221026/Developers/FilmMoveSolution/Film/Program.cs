@@ -1,5 +1,4 @@
 ﻿Meneger meneger = new Meneger();
-Console.WriteLine(meneger.Search(""));
 
 
 
