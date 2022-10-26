@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-class unknown
+class Uknown
 {
     public string Title { get; set; }
     public string Year { get; set; }
@@ -21,7 +21,7 @@ class unknown
     public string Country { get; set; }
     public string Awards { get; set; }
     public string Poster { get; set; }
-    public rating[] Ratings { get; set; }
+    public Rating[] Ratings { get; set; }
     public string Metascore { get; set; }
 
     [JsonPropertyName("imdbRating")]
@@ -35,14 +35,8 @@ class unknown
     public string Website { get; set; }
     public string Response { get; set; }
 
-    public override string ToString()
-    {
-        return base.ToString();
-    }
-
 }
-
-class rating
+class Rating
 {
     public string Source { get; set; }
     public string Value { get; set; }

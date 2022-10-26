@@ -5,7 +5,7 @@ class Meneger
 {
     public string keyUrl = "9ff58ab5";
     public string url = $"http://www.omdbapi.com/?i=tt3896198&apikey=";
-    private List<unknown> Search(string str)
+    private List<Unknown> Search(string str)
     {
         if(str != "" && str != null)
         str = "?" + str.Substring(1);
@@ -13,6 +13,6 @@ class Meneger
         HttpClient client = new HttpClient();
         var temp = client.GetAsync(URl).Result;
         var temp2 = temp.Content.ReadAsStringAsync().Result;
-        return JsonSerializer.Deserialize<List<unknown>>(temp2);
+        return JsonSerializer.Deserialize<Unknown>(temp2);
     }
 }
