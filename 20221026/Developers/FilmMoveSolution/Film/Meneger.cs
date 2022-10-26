@@ -13,6 +13,6 @@ class Meneger
         HttpClient client = new HttpClient();
         var temp = client.GetAsync(URl).Result;
         var temp2 = temp.Content.ReadAsStringAsync().Result;
-        return JsonSerializer.Deserialize<Unknown>(temp2);
+        return JsonSerializer.Deserialize<List<Unknown>>(temp2);
     }
 }
