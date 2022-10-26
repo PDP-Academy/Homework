@@ -41,15 +41,33 @@
                                 return;
                             case 1:
                                 Console.Clear();
-
+                                ViewMovies();
                                 break;
-
+                            case 2:
+                                Console.Clear();
+                                ViewSeries();
+                                break;
+                            case 3:
+                                Console.Clear();
+                                ViewEpisode();
+                                break;
                         }
                         break;
                 }
             }
         }
+        static void ViewEpisode()
+        {
 
+        }
+        static void ViewSeries()
+        {
+
+        }
+        static void ViewMovies()
+        {
+
+        }
         static void SortedByType()
         {
             
