@@ -1,8 +1,10 @@
-class Program
+namespace Project1
 {
-  static void Main(string[] args)
-  {
-    Console.WriteLine("Hello world");
-  }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello, World!");
+        }
+    }
 }
-
