@@ -6,6 +6,10 @@
         public List<Search> Search { get; set; }
         public string TotalResults { get; set; }
         public string Response { get; set; }
+        public override string ToString()
+        {
+            return $" Search : {Search}\n Total results : {TotalResults}\n Response : {Response}\n"; 
+        }
     }
 
 }
