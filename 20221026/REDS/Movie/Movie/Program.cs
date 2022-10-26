@@ -26,7 +26,7 @@
                         return;
                     case 1:
                         Console.Clear();
-                        SortedByType(); 
+                        GetList(); 
                         break;
                     case 2:
                         Console.Clear();
@@ -67,9 +67,13 @@
         {
 
         }
-        static void SortedByType()
+        static void GetList()
         {
-            
+            int page = 1;
+            Console.Write("     Search \n Key: ");
+            string key=Console.ReadLine();
+            string url = $"https://omdbapi.com/?s={key}&page={page}&apikey=d8c25eb8";
+
         }
         static void Menu()
         {
