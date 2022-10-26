@@ -5,30 +5,7 @@ using System.Text.Json;
 namespace LeaderConsole;
 public class Prgram
 {
-    #region
-    /* static void Main(string[] args)
-     {
-         Console.Write("Kino nomini kiriting : ");
-         string name = Console.ReadLine();
-        // Console.Write("Pageni kiriting : ");
-        // int n = int.Parse(Console.ReadLine());
-         string url = $"http://www.omdbapi.com/?t={name}&apikey=d38abc50";
-
-         HttpClient client = new HttpClient();
-         var response = client.GetAsync(url).Result;
-         var content = response.Content.ReadAsStringAsync().Result;
-
-         var option = new JsonSerializerOptions()
-         {
-             PropertyNameCaseInsensitive = true
-         };
-
-         Root deserialise = JsonSerializer.Deserialize<Root>(content, option);
-
-         Console.WriteLine(deserialise.ToString());
-
-     }*/
-    #endregion
+    
 
     private static void Main(string[] args)
     {
