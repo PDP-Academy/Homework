@@ -1,13 +1,17 @@
-﻿using System.Text.Json.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace LeaderConsole
 {
-    internal class Search
+    public class Search
     {
-       [JsonPropertyName("Search")]
-        public List<Movie> Movies { get; set; }
-        public string TotalResults { get; set; }
-        public string Response { get; set; }
-    
+        public string Title { get; set; }
+        public string Year { get; set; }
+        public string imdbID { get; set; }
+        public string Type { get; set; }
+        public string Poster { get; set; }
     }
 }
