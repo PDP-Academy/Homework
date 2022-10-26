@@ -8,7 +8,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        string url = "https://www.omdbapi.com/?t=Bn&page=&apikey=";
+        string url = "https://www.omdbapi.com/?t=Bn&&apikey=";
         
         string myKey = "ca272312";
 
@@ -65,9 +65,9 @@ internal class Program
 
         Console.Write("title: ");
         title += Console.ReadLine();
+        int pages = 10;
 
-
-        while (true)
+        while (index <= pages/10)
         {
             string newUrl = url + title + pageStr + $"{index}" + myKey;
 
@@ -85,10 +85,12 @@ internal class Program
             var search = JsonSerializer.Deserialize<Search>(contentString, option);
 
             var moviesList = search.Movies;
+            pages = int.Parse(search.TotalResults);
 
             foreach (var item in moviesList)
             {
                 Console.WriteLine("Title: " + item.Title);
+                Console.WriteLine("Pages: " + item);
             }
             Console.WriteLine("Page: " + index);
 
