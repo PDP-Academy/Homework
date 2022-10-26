@@ -8,7 +8,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        string url = "http://www.omdbapi.com/?t=ba&plot=full&apikey=";
+        string url = "https://www.omdbapi.com/?s=Batman&page=2&apikey=";
         
         string myKey = "ca272312";
 
@@ -22,13 +22,13 @@ internal class Program
         {
             PropertyNameCaseInsensitive = true
         };
-        var movie = JsonSerializer.Deserialize<Movie>(contentString, option);
-        Console.WriteLine(movie.Language);
-        Console.WriteLine(movie.Title);
-        Console.WriteLine(movie.ImdbID);
-        Console.WriteLine(movie.Year);
-        Console.WriteLine(movie.Director);
-        Console.WriteLine(movie.Actors);
-        Console.WriteLine(movie.Plot);
+        var movie = JsonSerializer.Deserialize<Search>(contentString, option);
+
+        var moviesList = movie.Movies;
+
+        foreach (var item in moviesList)
+        {
+            Console.WriteLine(item.Title);
+        }
     }
 }
