@@ -8,7 +8,7 @@
         public string Response { get; set; }
         public override string ToString()
         {
-            return $" Search : {Search}\n Total results : {TotalResults}\n Response : {Response}\n"; 
+            return $" Search : {Search} Total results : {TotalResults} Response : {Response}"; 
         }
     }
 

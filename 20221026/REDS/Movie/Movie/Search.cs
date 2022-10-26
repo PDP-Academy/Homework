@@ -10,7 +10,7 @@
         public string Poster { get; set; }
         public override string ToString()
         {
-            return $" Title : {Title}\n Year : {Year}\n Imdb Id : {ImdbID}\n Type : {Type}\n Poster : {Poster}\n";
+            return $" Title : {Title} Year : {Year} Imdb Id : {ImdbID} Type : {Type} Poster : {Poster}";
         }
     }
 }
