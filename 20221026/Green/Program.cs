@@ -58,35 +58,52 @@ internal class Program
     static void SearchByTitle()
     {
         string url = "https://www.omdbapi.com/?";
-        string title = "&s=";
-        string page = "&page=";
+        string title = "s=";
+        string pageStr = "&page=";
         string myKey = "&apikey=ca272312";
+        int index = 1;
 
         Console.Write("title: ");
         title += Console.ReadLine();
 
-        url = url + title + page + "1" + myKey;
 
-        HttpClient client = new HttpClient();
-        client.BaseAddress = new Uri(url);
-
-        var response = client.GetAsync(url).Result;
-        var contentString = response.Content.ReadAsStringAsync().Result;
-
-        var option = new JsonSerializerOptions()
+        while (true)
         {
-            PropertyNameCaseInsensitive = true
-        };
-        var search = JsonSerializer.Deserialize<Search>(contentString, option);
+            string newUrl = url + title + pageStr + $"{index}" + myKey;
 
-        var moviesList = search.Movies;
+            HttpClient client = new HttpClient();
 
-        foreach (var item in moviesList)
-        {
-            Console.WriteLine("Title: " + item.Title);
+            client.BaseAddress = new Uri(newUrl);
+
+            var response = client.GetAsync(newUrl).Result;
+            var contentString = response.Content.ReadAsStringAsync().Result;
+
+            var option = new JsonSerializerOptions()
+            {
+                PropertyNameCaseInsensitive = true
+            };
+            var search = JsonSerializer.Deserialize<Search>(contentString, option);
+
+            var moviesList = search.Movies;
+
+            foreach (var item in moviesList)
+            {
+                Console.WriteLine("Title: " + item.Title);
+            }
+            Console.WriteLine("Page: " + index);
+
+            var change = Console.ReadKey().Key;
+
+            if (change == ConsoleKey.RightArrow)
+            {
+                index++;
+            }
+            else if (change == ConsoleKey.LeftArrow)
+            {
+                index--;
+            }
+            Console.Clear();
         }
-        Console.WriteLine("Page: 1");
-
     }
     static void SortedToType()
     {
