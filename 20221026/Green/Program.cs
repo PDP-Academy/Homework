@@ -8,7 +8,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        string url = "https://www.omdbapi.com/?i=tt3896198&apikey=";
+        string url = "http://www.omdbapi.com/?t=ba&plot=full&apikey=";
         
         string myKey = "ca272312";
 
@@ -25,6 +25,10 @@ internal class Program
         var movie = JsonSerializer.Deserialize<Movie>(contentString, option);
         Console.WriteLine(movie.Language);
         Console.WriteLine(movie.Title);
-
+        Console.WriteLine(movie.ImdbID);
+        Console.WriteLine(movie.Year);
+        Console.WriteLine(movie.Director);
+        Console.WriteLine(movie.Actors);
+        Console.WriteLine(movie.Plot);
     }
 }
