@@ -1,15 +1,18 @@
-﻿namespace Movies
+﻿using System.Text.Json.Serialization;
+
+namespace Movies
 {
-    public class Movie
-    { 
-        public string Title { get; set; }
-        public string Year { get; set; }
-        public string ImdbID { get; set; }
-        public string Type { get; set; }
-        public string Poster { get; set; }
+
+    public class Search
+    {
+        [JsonPropertyName("Search")]
+        public List<Movie> Movie { get; set; }
+        [JsonPropertyName("totalResults")]
+        public string TotalResults { get; set; }
+        public string Response { get; set; }  
         public override string ToString()
         {
-            return $"'Title':'{Title}','Year':'{Year}','Imdb_Id':'{ImdbID}','Type':'{Type}','Poster':'{Poster}'";
+            return $"InfoOfMovie:,Total results:{TotalResults},Response:{Response}"; 
         }
 
     }
