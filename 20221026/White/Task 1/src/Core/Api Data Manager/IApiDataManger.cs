@@ -7,5 +7,8 @@ internal interface IApiDataManager
     ///<Summary>Apidan ma'lumot olib beradi</Summary>
     public List<Object> GetDataFromApi(string url);
     ///<Summary>Title bo'yicha qidirib ma'lumotlarni uzatadi</Summary>
+
+    ///<Summary>Title bo'yicha qidirib ma'lumotlarni uzatadi</Summary>
     public List<Object> SearchDataByTitle(string title);
+    
 }
