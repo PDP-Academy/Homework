@@ -10,9 +10,15 @@ class Program
     static void Main(string[] args)
     {
 
+
         //SearchByName();
 
-        Menu1();
+         Menu1();
+
+
+        // SearchByName();
+
+
 
     }
 
@@ -21,7 +27,8 @@ class Program
         Console.Write("Value kiriting: ");
         string name = Console.ReadLine();
         string url = $@"https://newsapi.org/v2/everything?q={name}&apiKey=e20df51e594a4b7daae76ca0ce171f4e";
-        
+
+
         HttpClient client = new HttpClient();
 
         var response = client.GetAsync(url).Result;
@@ -47,24 +54,49 @@ class Program
             if (pagenation == 1 && key == ConsoleKey.LeftArrow)
                 continue;
             if (pagenation == json.totalResults / 10 && ConsoleKey.RightArrow == key)
-                continue;
-            if (ConsoleKey.LeftArrow == key)
+
+            HttpClient client = new HttpClient();
+            
+            var response = client.GetAsync(url).Result;
+            var content = response.Content.ReadAsStringAsync().Result;
+            var json = JsonSerializer.Deserialize<Root>(content, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+            
+            int pagenation = 10;
+            int i = 0;
+            Console.WriteLine(url);
+            while (true)
             {
-                i -= 20;
-                pagenation -= 10;
-            }
-            if (ConsoleKey.RightArrow == key)
-            {
-                i = pagenation;
-                pagenation += 10;
+                Console.Clear();
+                for (; i < pagenation && i < json.totalResults; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {json.articles[i].title}");
+                }
+                Console.WriteLine($@"<<{pagenation / 10} - {json.totalResults / 10}>>");
+                var key = Console.ReadKey().Key;
+                if (pagenation == 1 && key == ConsoleKey.LeftArrow)
+                    continue;
+                if (pagenation == json.totalResults / 10 && ConsoleKey.RightArrow == key)
+                    continue;
+                if (ConsoleKey.LeftArrow == key)
+                {
+                    i -= 20;
+                    pagenation -= 10;
+                }
+                if (ConsoleKey.RightArrow == key)
+                {
+                    i = pagenation;
+                    pagenation += 10;
+                }
+
+                if (ConsoleKey.Escape == key)
+                    return;
+
             }
 
-            if (ConsoleKey.Escape == key)
-                return;
-            
         }
 
     }
+
     static void Menu1()
     {
         System.Console.WriteLine();
@@ -79,26 +111,31 @@ class Program
         switch (change)
         {
             case 1:
-            {
-            } break;
+                {
+                }
+                break;
             case 2:
-            {
-                ByCategory();
-                Menu1();
-            } break;
+                {
+                    ByCategory();
+                    Menu1();
+                }
+                break;
             case 3:
-            {
+                {
 
-            } break;
+                }
+                break;
             case 4:
-            {
+                {
 
-            } break;
+                }
+                break;
 
             default:
-            {
+                {
 
-            } break;
+                }
+                break;
         }
     }
     static void ByCategory()
@@ -122,36 +159,43 @@ class Program
         switch (change)
         {
             case 1:
-            {
-                category = "&category=business";
-            } break;
+                {
+                    category = "&category=business";
+                }
+                break;
             case 2:
-            {
-                category += "&category=entertainment";
-            } break;
+                {
+                    category += "&category=entertainment";
+                }
+                break;
             case 3:
-            {
-                category += "&category=general";
-            } break;
+                {
+                    category += "&category=general";
+                }
+                break;
             case 4:
-            {
-                category += "&category=health";
-            } break;
+                {
+                    category += "&category=health";
+                }
+                break;
             case 5:
-            {
-                category += "&category=science";
-            } break;
+                {
+                    category += "&category=science";
+                }
+                break;
             case 6:
-            {
-                category += "&category=sports";
-            } break;
+                {
+                    category += "&category=sports";
+                }
+                break;
             case 7:
-            {
-                category += "&category=technology";
-            } break;
+                {
+                    category += "&category=technology";
+                }
+                break;
 
             default:
-            break;
+                break;
         }
 
         string newUrl = url + category + apiKey;
@@ -179,7 +223,7 @@ class Program
 
         var sourceList = root.sources;
 
-        for (int i = 0; i < sourceList.Count; )
+        for (int i = 0; i < sourceList.Count;)
         {
             System.Console.WriteLine("Name: " + sourceList[i].name);
             System.Console.WriteLine("Id: " + sourceList[i].id);
@@ -188,7 +232,7 @@ class Program
             System.Console.WriteLine("Description: " + sourceList[i].description);
             System.Console.WriteLine("Category: " + sourceList[i].category);
             System.Console.WriteLine("Country: " + sourceList[i].country);
-            
+
             System.Console.WriteLine();
             System.Console.WriteLine($"{i + 1} / {sourceList.Count}");
 
@@ -256,4 +300,5 @@ class Program
             Console.Clear();
         }
     }
+
 }
