@@ -1,12 +1,12 @@
 class MainPage
 {
-    public MainPage(string t, string y, string i)
+    public MainPage(string s, string y, string i)
     {
-        this.t = t;
+        this.s = s;
         this.y = y;
         this.i = i;
     }
-    public string t { get; set; } = null;
+    public string s { get; set; } = null;
     public string y { get; set; } = null;
     public string i {get; set;} = null;
     
@@ -18,7 +18,7 @@ tittle:
         if (answer == "Xa" || answer == "xa")
         {
             System.Console.Write("Tittle: ");
-            this.t = Console.ReadLine();
+            this.s = Console.ReadLine();
         }
         else if(answer == "Yoq" || answer == "yoq")
         {
@@ -64,7 +64,7 @@ tittle:
     }
     public string Filter()
     {
-        return $"t={t}&y={y}&i={i}";
+        return $"s={s}&y={y}&i={i}";
     }
 
        
