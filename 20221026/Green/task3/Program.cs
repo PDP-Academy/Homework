@@ -13,14 +13,22 @@ class Program
     {
         var nationalityOfNames = new List<Country>();
         var names = GetNames();
+        int j = 0;
 
         for (int i = 0; i < names.Count; i++)
         {
-            nationalityOfNames.Add(PredictNationalityOfName(names[i]));
+            var pCountry = PredictNationalityOfName(names[i]);
 
-            var country = nationalityOfNames[i];
-            Console.WriteLine($"Country Id: {country.Country_id}");
-            Console.WriteLine($"Probability: {country.Probability}");
+            if (pCountry.Probability >= 0.8)
+            {
+                nationalityOfNames.Add(pCountry);
+
+                var country = nationalityOfNames[j++];
+                Console.WriteLine("Name: " + names[i]);
+                Console.WriteLine($"Country Id: {country.Country_id}");
+                Console.WriteLine($"Probability: {country.Probability}");
+                Console.WriteLine();
+            }
         }
        
 
