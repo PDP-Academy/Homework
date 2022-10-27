@@ -43,7 +43,7 @@ class Program
     static List<string> GetNames()
     {
         var namesList = new List<string>();
-        string path = new Uri(new Uri(System.AppDomain.CurrentDomain.BaseDirectory), "names.txt").AbsolutePath;
+        string path = new Uri(new Uri(System.AppDomain.CurrentDomain.BaseDirectory), "../../../names.txt").AbsolutePath;
         Console.WriteLine(path);
         using (StreamReader streamReader = new StreamReader(path))
         {
