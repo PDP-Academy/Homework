@@ -273,7 +273,6 @@ namespace task2
 
         static void WallStreetJournal()
         {
-            System.Console.WriteLine("\tOxirgi 6 oy ichida Wall Street Journal tomonidan chop etilgan barcha maqolalar,\n\tso'nggi birinchisi bo'yicha saralangan!\n");
 
             string url = "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=127ae4cb4c7b48c6b55c840fcba43f88";
 
