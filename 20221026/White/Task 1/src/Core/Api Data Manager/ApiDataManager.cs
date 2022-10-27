@@ -1,3 +1,5 @@
+using System.Text.Json;
+
 namespace White.Core;
 
 internal class ApiDataManager : IApiDataManager
@@ -12,5 +14,11 @@ internal class ApiDataManager : IApiDataManager
     public List<object> GetDataFromApi()
     {
         throw new NotImplementedException();
+    }
+
+
+    public List<object> SearchDataByTitle(string title, int page)
+    {
+        
     }
 }
