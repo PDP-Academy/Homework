@@ -36,7 +36,27 @@ internal class Program
     {
         System.Console.WriteLine();
         System.Console.WriteLine("1.Title bo'yicha qidirish");
-        System.Console.WriteLine("1.Toifa bo'yicha qidirish");
+        System.Console.WriteLine("2.Toifa bo'yicha qidirish");
+        System.Console.WriteLine();
+        System.Console.Write("-->  ");
+
+        int change = Convert.ToInt32(Console.ReadLine());
+
+        switch (change)
+        {
+            case 1:
+            {
+                break;
+            }
+            case 2:
+            {
+                break;
+            }
+            default:
+            {
+                break;
+            }
+        }
     }
     static void SearchToTitle()
     {
