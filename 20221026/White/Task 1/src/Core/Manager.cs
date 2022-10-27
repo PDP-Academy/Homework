@@ -2,7 +2,7 @@ namespace White.Core;
 
 class Manager : Imeneger
 {
-    IApiDataManager manager;
+    IApiDataManager manager = new ApiDataManager();
     public List<IResult> SearchDataByTitle(string title, int page)
     {
         List<IResult> list = manager.SearchDataByTitle(title, page);
