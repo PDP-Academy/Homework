@@ -139,7 +139,7 @@ namespace task2
 
                 case 3:
                     {
-
+                        ByLanguageMenu();
                     }
                     break;
                 case 4:
@@ -383,6 +383,8 @@ namespace task2
         }
         static void ByLanguageMenu()
         {
+            string url = "https://newsapi.org/v2/top-headlines/sources?language=";
+
             System.Console.WriteLine();
             System.Console.WriteLine("1) ar");
             System.Console.WriteLine("2) de");
@@ -404,66 +406,88 @@ namespace task2
 
             switch (change)
             {
-                case 1:
-                {
+                case 1: url += "ar";
+                break;
+                case 2: url += "de";
+                break;
+                case 3: url += "en";
+                break;
+                case 4: url += "es";
+                break;
+                case 5: url += "fr";
+                break;
+                case 6: url += "he";
+                break;
+                case 7: url += "it";
+                break;
+                case 8: url += "nl";
+                break;
+                case 9: url += "no";
+                break;
+                case 10: url += "pt";
+                break;
+                case 11: url += "ru";
+                break;
+                case 12: url += "sv";
+                break;
+                case 13: url += "ud";
+                break;
+                case 14: url += "zh";
+                break;
+                default: ByLanguageMenu();
+                break;
+            }
+            url += "&apiKey=127ae4cb4c7b48c6b55c840fcba43f88";
 
-                }break;
-                case 2:
-                {
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (compatible; AcmeInc/1.0)");
+            client.BaseAddress = new Uri(url);
 
-                }break;
-                case 3:
-                {
+            var response = client.GetAsync(url).Result;
 
-                }break;
-                case 4:
-                {
+            string contentString = response.Content.ReadAsStringAsync().Result;
 
-                }break;
-                case 5:
-                {
+            var option = new JsonSerializerOptions()
+            {
+                PropertyNameCaseInsensitive = true
+            };
 
-                }break;
-                case 6:
-                {
+            var root = JsonSerializer.Deserialize<Root>(contentString, option);
 
-                }break;
-                case 7:
-                {
+            if (root.status is "error")
+            {
+                Console.Clear();
+                Console.WriteLine(root.message);
+                MainMenu();
+            }
 
-                }break;
-                case 8:
-                {
+            var sourceList = root.sources;
 
-                }break;
-                case 9:
-                {
+            for (int i = 0; i < sourceList.Count;)
+            {
+                System.Console.WriteLine("Name: " + sourceList[i].name);
+                System.Console.WriteLine("Id: " + sourceList[i].id);
+                System.Console.WriteLine("Language: " + sourceList[i].language);
+                System.Console.WriteLine("Url: " + sourceList[i].url);
+                System.Console.WriteLine("Description: " + sourceList[i].description);
+                System.Console.WriteLine("Category: " + sourceList[i].category);
+                System.Console.WriteLine("Country: " + sourceList[i].country);
 
-                }break;
-                case 10:
-                {
+                System.Console.WriteLine();
+                System.Console.WriteLine($"{i + 1} / {sourceList.Count}");
 
-                }break;
-                case 11:
-                {
+                var change2 = Console.ReadKey().Key;
 
-                }break;
-                case 12:
+                if (change2 == ConsoleKey.RightArrow && i < sourceList.Count - 1)
+                    i++;
+                else if (change2 == ConsoleKey.LeftArrow && i > 0)
+                    i--;
+                else if (change2 == ConsoleKey.Backspace)
                 {
+                    MainMenu();
+                }
 
-                }break;
-                case 13:
-                {
-
-                }break;
-                case 14:
-                {
-
-                }break;
-                default:
-                {
-
-                }break;
+                Console.Clear();
             }
         }
 
