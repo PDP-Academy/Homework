@@ -3,8 +3,8 @@ using White.Core;
 
 internal class MainUI
 {
-    Imeneger manager;
-    public MainUI(Imeneger manager)
+    Manager manager;
+    public MainUI(Manager manager)
     {
         this.manager = manager;
         Home();
@@ -19,15 +19,15 @@ internal class MainUI
         SearchAndPrintByTitle(s);
     }
 
-    void PrintOneResult(IResult result, int index)
+    void PrintOneResult(IMovie result, int index)
     {
-        Console.WriteLine($"|{(index + 1).ToString().PadRight(5)}|{result.Title.PadRight(30)}|{result.Type.PadRight(10)}|{result.imdbID.PadRight(10)}|");
+        Console.WriteLine($"|{(index + 1).ToString().PadRight(5)}|{result.Title.PadRight(60)}|{result.Type.PadRight(10)}|{result.ImdbId.PadRight(10)}|");
     }
 
     void SearchAndPrintByTitle(string title, int page = 1)
     {
-        Console.WriteLine($"|{"T/R".ToString().PadRight(5)}|{"Title".PadRight(30)}|{"Type".PadRight(10)}|{"ImdbId".PadRight(10)}|");
-        List<IResult> movies = manager.SearchDataByTitle(title, page);
+        Console.WriteLine($"|{"T/R".ToString().PadRight(5)}|{"Title".PadRight(60)}|{"Type".PadRight(10)}|{"ImdbId".PadRight(10)}|");
+        List<IMovie> movies = manager.SearchByTitle(title, page);
         foreach ((var item, int index) in movies.Select((x, index) => (x, index)))
             PrintOneResult(item, index);
     }
