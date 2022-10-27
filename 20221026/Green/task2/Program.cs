@@ -38,7 +38,7 @@ class Program
             }
             Console.WriteLine($@"<<{i / 10} - {json.totalResults / 10}>>");
             var key = Console.ReadKey().Key;
-            if (pagenation == 1 && key == ConsoleKey.LeftArrow)
+            if (pagenation == 0 || pagenation == 1 && key == ConsoleKey.LeftArrow)
                 continue;
             if (pagenation == json.totalResults / 10 && ConsoleKey.RightArrow == key)
                 continue;
