@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 using System.Net.Http;
 using Green;
 
-internal class Program
+internal class Program1
 {
     private static void Main(string[] args)
     {
