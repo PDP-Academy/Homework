@@ -381,6 +381,90 @@ namespace task2
                 Console.Clear();
             }
         }
+        static void ByLanguageMenu()
+        {
+            System.Console.WriteLine();
+            System.Console.WriteLine("1) ar");
+            System.Console.WriteLine("2) de");
+            System.Console.WriteLine("3) en");
+            System.Console.WriteLine("4) es");
+            System.Console.WriteLine("5) fr");
+            System.Console.WriteLine("6) he");
+            System.Console.WriteLine("7) it");
+            System.Console.WriteLine("8) nl");
+            System.Console.WriteLine("9) no");
+            System.Console.WriteLine("10) pt");
+            System.Console.WriteLine("11) ru");
+            System.Console.WriteLine("12) sv");
+            System.Console.WriteLine("13) ud");
+            System.Console.WriteLine("14) zh");
+            System.Console.WriteLine();
+            System.Console.Write("-->  ");
+            int change = Convert.ToInt32(Console.ReadLine());
 
+            switch (change)
+            {
+                case 1:
+                {
+
+                }break;
+                case 2:
+                {
+
+                }break;
+                case 3:
+                {
+
+                }break;
+                case 4:
+                {
+
+                }break;
+                case 5:
+                {
+
+                }break;
+                case 6:
+                {
+
+                }break;
+                case 7:
+                {
+
+                }break;
+                case 8:
+                {
+
+                }break;
+                case 9:
+                {
+
+                }break;
+                case 10:
+                {
+
+                }break;
+                case 11:
+                {
+
+                }break;
+                case 12:
+                {
+
+                }break;
+                case 13:
+                {
+
+                }break;
+                case 14:
+                {
+
+                }break;
+                default:
+                {
+
+                }break;
+            }
+        }
     }
 }
