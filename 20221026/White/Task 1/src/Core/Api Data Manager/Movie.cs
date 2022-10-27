@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
-namespace White.src.Core.Api_Data_Manager
+namespace White.Core
 {
-    internal class Movie
+    public class Movie : IResult
     {
+        public string Title { get; set; }
+        public string Message { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string ImdbId { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Type { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Poster { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
     }
 }
