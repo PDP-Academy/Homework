@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeaderConsole
 {
-    public class Root
+    public class RootSearch
     {
         public List<Search> Search { get; set; }
         public string totalResults { get; set; }
