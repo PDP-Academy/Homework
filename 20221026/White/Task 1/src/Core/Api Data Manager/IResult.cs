@@ -21,5 +21,5 @@ internal interface IResult
     /// Movie Posteri
     /// </summary>
     public string Poster { get; set; }
-
 }
+
