@@ -34,6 +34,14 @@ class Unknown
     public string Production { get; set; }
     public string Website { get; set; }
     public string Response { get; set; }
+    public override string ToString()
+    {
+        return $@"\nType:{Type}\n
+        Title:{Title}\n
+        Language:{Language}\n
+        Country:{Country}\n
+        Year:{Year}\n";
+    }
 
 }
 class Rating
