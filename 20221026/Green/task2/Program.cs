@@ -32,12 +32,11 @@ class Program
         {
             case 1:
             {
-                ByCategory();
-                Menu1();
             } break;
             case 2:
             {
-
+                ByCategory();
+                Menu1();
             } break;
             case 3:
             {
