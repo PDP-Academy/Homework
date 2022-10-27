@@ -5,11 +5,8 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-<<<<<<< HEAD
-class Unknown  // Nomalum
-=======
+
 class Unknown
->>>>>>> 636a6be557e795d4d6f59e225ebb9c028e80d12f
 {
     public string Title { get; set; }
     public string Year { get; set; }
