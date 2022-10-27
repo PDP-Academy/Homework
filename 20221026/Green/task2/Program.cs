@@ -139,7 +139,7 @@ namespace task2
 
                 case 3:
                     {
-
+                        ByLanguageMenu();
                     }
                     break;
                 case 4:
@@ -298,6 +298,7 @@ namespace task2
             {
                 System.Console.WriteLine("\tOxirgi 6 oy ichida Wall Street Journal tomonidan chop etilgan barcha maqolalar," +
                     "\n\tso'nggi birinchisi bo'yicha saralangan!\n");
+
                 System.Console.WriteLine("Author: " + root.articles[i].author);
                 System.Console.WriteLine("content: " + root.articles[i].content);
                 System.Console.WriteLine("description: " + root.articles[i].description);
@@ -380,6 +381,165 @@ namespace task2
                 Console.Clear();
             }
         }
+        static void ByLanguageMenu()
+        {
+            string url = "https://newsapi.org/v2/top-headlines/sources?language=";
 
+            System.Console.WriteLine();
+            System.Console.WriteLine("1) ar");
+            System.Console.WriteLine("2) de");
+            System.Console.WriteLine("3) en");
+            System.Console.WriteLine("4) es");
+            System.Console.WriteLine("5) fr");
+            System.Console.WriteLine("6) he");
+            System.Console.WriteLine("7) it");
+            System.Console.WriteLine("8) nl");
+            System.Console.WriteLine("9) no");
+            System.Console.WriteLine("10) pt");
+            System.Console.WriteLine("11) ru");
+            System.Console.WriteLine("12) sv");
+            System.Console.WriteLine("13) ud");
+            System.Console.WriteLine("14) zh");
+            System.Console.WriteLine();
+            System.Console.Write("-->  ");
+            int change = Convert.ToInt32(Console.ReadLine());
+
+            switch (change)
+            {
+                case 1: url += "ar";
+                break;
+                case 2: url += "de";
+                break;
+                case 3: url += "en";
+                break;
+                case 4: url += "es";
+                break;
+                case 5: url += "fr";
+                break;
+                case 6: url += "he";
+                break;
+                case 7: url += "it";
+                break;
+                case 8: url += "nl";
+                break;
+                case 9: url += "no";
+                break;
+                case 10: url += "pt";
+                break;
+                case 11: url += "ru";
+                break;
+                case 12: url += "sv";
+                break;
+                case 13: url += "ud";
+                break;
+                case 14: url += "zh";
+                break;
+                default: ByLanguageMenu();
+                break;
+            }
+            url += "&apiKey=127ae4cb4c7b48c6b55c840fcba43f88";
+
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (compatible; AcmeInc/1.0)");
+            client.BaseAddress = new Uri(url);
+
+            var response = client.GetAsync(url).Result;
+
+            string contentString = response.Content.ReadAsStringAsync().Result;
+
+            var option = new JsonSerializerOptions()
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
+            var root = JsonSerializer.Deserialize<Root>(contentString, option);
+
+            if (root.status is "error")
+            {
+                Console.Clear();
+                Console.WriteLine(root.message);
+                MainMenu();
+            }
+
+            var sourceList = root.sources;
+
+            for (int i = 0; i < sourceList.Count;)
+            {
+                System.Console.WriteLine("Name: " + sourceList[i].name);
+                System.Console.WriteLine("Id: " + sourceList[i].id);
+                System.Console.WriteLine("Language: " + sourceList[i].language);
+                System.Console.WriteLine("Url: " + sourceList[i].url);
+                System.Console.WriteLine("Description: " + sourceList[i].description);
+                System.Console.WriteLine("Category: " + sourceList[i].category);
+                System.Console.WriteLine("Country: " + sourceList[i].country);
+
+                System.Console.WriteLine();
+                System.Console.WriteLine($"{i + 1} / {sourceList.Count}");
+
+                var change2 = Console.ReadKey().Key;
+
+                if (change2 == ConsoleKey.RightArrow && i < sourceList.Count - 1)
+                    i++;
+                else if (change2 == ConsoleKey.LeftArrow && i > 0)
+                    i--;
+                else if (change2 == ConsoleKey.Backspace)
+                {
+                    MainMenu();
+                }
+
+                Console.Clear();
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        static void SearchByCountry()
+        {
+            //string[] countri
+            //aearataubebgbrcachcncocuczdeegfrgbgrhkhuidieilin
+            
+
+        }
     }
 }
