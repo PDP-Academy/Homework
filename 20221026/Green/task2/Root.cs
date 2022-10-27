@@ -1,6 +1,14 @@
+using System;
+namespace task2;
 public class Root
     {
-        public string status { get; set; }
-        public int totalResults { get; set; }
-        public List<Article> articles { get; set; }
+        public Root(string status, int totalResults, List<Article> articles)
+        {
+            this.Status = status;
+            this.TotalResults = totalResults;
+            this.Articles = articles;
+        }
+        public string Status { get; set; }
+        public int TotalResults { get; set; }
+        public List<Article> Articles { get; set; }
     }

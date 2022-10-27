@@ -1,4 +1,6 @@
-    public class Article
+using System;
+namespace task2;
+public class Article
     {
         public Source source { get; set; }
         public string author { get; set; }
@@ -6,6 +8,6 @@
         public string description { get; set; }
         public string url { get; set; }
         public string urlToImage { get; set; }
-        public DateTime publishedAt { get; set; }
+        public string publishedAt { get; set; }
         public string content { get; set; }
     }
