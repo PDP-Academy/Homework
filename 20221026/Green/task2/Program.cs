@@ -20,10 +20,7 @@ class Program
     {
         System.Console.WriteLine("Oxirgi 6 oy ichida Wall Street Journal tomonidan chop etilgan barcha maqolalar,\nso'nggi birinchisi bo'yicha saralangan!");
 
-        string url = "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=e20df51e594a4b7daae76ca0ce171f4e";
-        
-
-    
+        string url = "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=ebfcc5d8f7b745f78205156776824331";
 
         HttpClient client = new HttpClient();
         client.BaseAddress = new Uri(url);
@@ -31,8 +28,6 @@ class Program
         var response = client.GetAsync(url).Result;
 
         string contentString = response.Content.ReadAsStringAsync().Result;
-
-        
 
         var option = new JsonSerializerOptions()
         {
@@ -66,7 +61,7 @@ class Program
             else if (change == ConsoleKey.Backspace)
                 return;
 
-
+            Console.Clear();
         }
     }
 }
