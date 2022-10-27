@@ -152,17 +152,24 @@ internal class Program
         };
         var search = JsonSerializer.Deserialize<Search>(contentString, option);
 
+        if (bool.Parse(search.Response) is false)
+        {
+            Console.Clear();
+            Console.WriteLine($"Response: {search.Response} , Error: {search.Error}");
+            SortedToType();
+        }
+
         var moviesList = search.Movies;
 
         for (int i = 0; i < moviesList.Count; i++)
         {
-            if (moviesList[i].Type == "movie")
+            if (moviesList[i].Type is "movie")
                 moviesSort.Add(moviesList[i]);
 
-            else if (moviesList[i].Type == "series")
+            else if (moviesList[i].Type is "series")
                 series.Add(moviesList[i]);
 
-            else if (moviesList[i].Type == "episode")
+            else if (moviesList[i].Type is "episode")
                 episode.Add(moviesList[i]);
         }
 
@@ -182,7 +189,7 @@ internal class Program
         {
             Console.Clear();
             Console.WriteLine(exception.Message);
-            MainMenu();
+            SortedToType();
         }
 
         switch (change)
@@ -228,7 +235,7 @@ internal class Program
 
             var change = Console.ReadKey().Key;
 
-            if (change == ConsoleKey.RightArrow)
+            if (change == ConsoleKey.RightArrow && i < moviesSort.Count - 1)
                 i++;
             else if (change == ConsoleKey.LeftArrow && i != 0)
                 i--;
@@ -245,7 +252,7 @@ internal class Program
             System.Console.WriteLine("Series toifasida topilmadi! ");
             SortedToType();
         }
-        for (int i = 0; i < series.Count; i++)
+        for (int i = 0; i < series.Count; )
         {
             System.Console.Write("Title: " + series[i].Title);
             System.Console.Write("Type: " + series[i].Type);
@@ -254,9 +261,9 @@ internal class Program
 
             var change = Console.ReadKey().Key;
 
-            if (change == ConsoleKey.RightArrow)
+            if (change == ConsoleKey.RightArrow && i < series.Count - 1)
                 i++;
-            else if (change == ConsoleKey.LeftArrow)
+            else if (change == ConsoleKey.LeftArrow && i > 1)
                 i--;
             else if (change == ConsoleKey.Backspace)
                 SortedToType();
@@ -271,8 +278,9 @@ internal class Program
             System.Console.WriteLine("Episode toifasida topilmadi! ");
             SortedToType();
         }
-        for (int i = 0; i < episode.Count; i++)
+        for (int i = 0; i < episode.Count; )
         {
+            Console.WriteLine(" == Search result == ");
             System.Console.Write("Title: " + episode[i].Title);
             System.Console.Write("Type: " + episode[i].Type);
             System.Console.WriteLine();
@@ -280,9 +288,9 @@ internal class Program
 
             var change = Console.ReadKey().Key;
 
-            if (change == ConsoleKey.RightArrow)
+            if (change == ConsoleKey.RightArrow && i < episode.Count - 1)
                 i++;
-            else if (change == ConsoleKey.LeftArrow)
+            else if (change == ConsoleKey.LeftArrow && i > 1)
                 i--;
             else if (change == ConsoleKey.Backspace)
                 SortedToType();
