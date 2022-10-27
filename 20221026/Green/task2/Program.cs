@@ -21,14 +21,18 @@ class Program
         System.Console.WriteLine("Oxirgi 6 oy ichida Wall Street Journal tomonidan chop etilgan barcha maqolalar,\nso'nggi birinchisi bo'yicha saralangan!");
 
         string url = "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=e20df51e594a4b7daae76ca0ce171f4e";
+        
+
+    
 
         HttpClient client = new HttpClient();
+        client.BaseAddress = new Uri(url);
 
         var response = client.GetAsync(url).Result;
 
         string contentString = response.Content.ReadAsStringAsync().Result;
 
-        System.Console.WriteLine(contentString);
+        
 
         var option = new JsonSerializerOptions()
         {
