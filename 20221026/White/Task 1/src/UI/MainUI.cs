@@ -26,10 +26,19 @@ internal class MainUI
 
     void SearchAndPrintByTitle(string title, int page = 1)
     {
+        Console.Clear();
         Console.WriteLine($"|{"T/R".ToString().PadRight(5)}|{"Title".PadRight(60)}|{"Type".PadRight(10)}|{"ImdbId".PadRight(10)}|");
         List<IMovie> movies = manager.SearchByTitle(title, page);
         foreach ((var item, int index) in movies.Select((x, index) => (x, index)))
             PrintOneResult(item, index);
+        Console.WriteLine($"<-[{page}]->");
+        ConsoleKeyInfo keyInfo = Console.ReadKey();
+        if (keyInfo.Key == ConsoleKey.LeftArrow && page > 1)
+            page--;
+        else if (keyInfo.Key == ConsoleKey.RightArrow && page <= 10)
+            page++;
+        else { };
+        SearchAndPrintByTitle(title, page);
     }
 
 }
