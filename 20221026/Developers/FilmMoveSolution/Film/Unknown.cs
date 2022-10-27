@@ -5,7 +5,11 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
+<<<<<<< HEAD
 class Unknown  // Nomalum
+=======
+class Unknown
+>>>>>>> 636a6be557e795d4d6f59e225ebb9c028e80d12f
 {
     public string Title { get; set; }
     public string Year { get; set; }
@@ -34,6 +38,14 @@ class Unknown  // Nomalum
     public string Production { get; set; }
     public string Website { get; set; }
     public string Response { get; set; }
+    public override string ToString()
+    {
+        return $"Type:{Type}\n"+
+        $"Title:{Title}\n"+
+        $"Language:{Language}\n"+
+        $"Country:{Country}\n"+
+        $"Year:{Year}\n";
+    }
 
 }
 class Rating
