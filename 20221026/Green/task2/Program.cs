@@ -56,13 +56,13 @@ namespace task2
         {
             Console.Write("Value kiriting: ");
             string name = Console.ReadLine();
-            string url = $@"https://newsapi.org/v2/everything?q={name}&apiKey=e20df51e594a4b7daae76ca0ce171f4e";
-
+            string url = $@"https://newsapi.org/v2/everything?q={name}&apiKey=";
+            string myKey = "127ae4cb4c7b48c6b55c840fcba43f88";
 
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(url);
+            client.BaseAddress = new Uri(url + myKey);
 
-            var response = client.GetAsync(url).Result;
+            var response = client.GetAsync(url + myKey).Result;
             var content = response.Content.ReadAsStringAsync().Result;
 
             var option = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
@@ -151,7 +151,7 @@ namespace task2
         {
             string url = "https://newsapi.org/v2/top-headlines/sources?";
 
-            string apiKey = "&apiKey=ebfcc5d8f7b745f78205156776824331";
+            string apiKey = "&apiKey=127ae4cb4c7b48c6b55c840fcba43f88";
 
             System.Console.WriteLine("1. Business.");
             System.Console.WriteLine("2.Entertainment.");
@@ -266,7 +266,7 @@ namespace task2
         {
             System.Console.WriteLine("\tOxirgi 6 oy ichida Wall Street Journal tomonidan chop etilgan barcha maqolalar,\n\tso'nggi birinchisi bo'yicha saralangan!\n");
 
-            string url = "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=ebfcc5d8f7b745f78205156776824331";
+            string url = "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=127ae4cb4c7b48c6b55c840fcba43f88";
 
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(url);
