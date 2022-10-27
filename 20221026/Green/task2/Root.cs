@@ -8,6 +8,7 @@ public class Root
             this.totalResults = totalResults;
             this.articles = articles;
         }
+
         public string status { get; set; }
         public string message { get; set; }
         public int totalResults { get; set; }

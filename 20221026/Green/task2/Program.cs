@@ -10,14 +10,10 @@ class Program
     static void Main(string[] args)
     {
 
-
-
-        Menu1();
-
-
-
+        MainMenu();
 
     }
+    
     static void MainMenu()
     {
         System.Console.WriteLine("1.SearchByName");
@@ -31,26 +27,48 @@ class Program
         {
             case 1:
             {
-                
+                    SearchByName();
             } break;
+
             case 2:
             {
-                WallStreetJournal();
+                    WallStreetJournal();
             } break;
+
             case 3:
             {
-                Menu1();
+                    SourceMunu();
             } break;
-            default: break;
+
+            default: 
+                Console.Clear();
+                MainMenu();
+                break;
         }
     }
 
+    static void SearchByName()
+    {
+        Console.Write("Value kiriting: ");
+        string name = Console.ReadLine();
+        string url = $@"https://newsapi.org/v2/everything?q={name}&apiKey=e20df51e594a4b7daae76ca0ce171f4e";
 
 
-    
+        HttpClient client = new HttpClient();
 
+        var response = client.GetAsync(url).Result;
+        var content = response.Content.ReadAsStringAsync().Result;
 
-    static void Menu1()
+        var option = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
+
+        var json = JsonSerializer.Deserialize<Root>(content, option);
+        int pagenation = 10;
+        int i = 0;
+        Console.WriteLine(url);
+
+    }
+
+    static void SourceMunu()
     {
         System.Console.WriteLine();
         System.Console.WriteLine("1.All sources.");
@@ -64,14 +82,13 @@ class Program
         switch (change)
         {
             case 1:
-
                 {
+
                 }
                 break;
             case 2:
                 {
                     ByCategory();
-                    
                 }
                 break;
 
@@ -93,6 +110,7 @@ class Program
                 break;
         }
     }
+
     static void ByCategory()
     {
         string url = "https://newsapi.org/v2/top-headlines/sources?";
@@ -207,6 +225,7 @@ class Program
         }
 
     }
+
     static void WallStreetJournal()
     {
         System.Console.WriteLine("\tOxirgi 6 oy ichida Wall Street Journal tomonidan chop etilgan barcha maqolalar,\n\tso'nggi birinchisi bo'yicha saralangan!\n");
@@ -255,4 +274,5 @@ class Program
             Console.Clear();
         }
     }
+
 }
