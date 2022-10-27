@@ -3,6 +3,9 @@ using System.Text.Json;
 using System.Text;
 using System.IO;
 using System.Text.Json.Serialization;
+using System.Net;
+using System.Net.Http.Headers;
+using System.Net.Http;
 
 namespace task2
 {
@@ -52,7 +55,7 @@ namespace task2
             }
         }
 
-        static void SearchByName()
+        static async void SearchByName()
         {
             Console.Write("Value kiriting: ");
             string name = Console.ReadLine();
@@ -60,7 +63,10 @@ namespace task2
             string myKey = "127ae4cb4c7b48c6b55c840fcba43f88";
 
             HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (compatible; AcmeInc/1.0)");
+
             client.BaseAddress = new Uri(url + myKey);
+            
 
             var response = client.GetAsync(url + myKey).Result;
             var content = response.Content.ReadAsStringAsync().Result;
