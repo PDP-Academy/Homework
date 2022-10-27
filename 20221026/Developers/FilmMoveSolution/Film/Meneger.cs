@@ -3,7 +3,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 class Meneger
 {
-    public string keyUrl = "9ff58ab5";
+    public string keyUrl = " 9d021f42";
     public string url = $"http://www.omdbapi.com/?i=tt3896198&apikey=";
     private List<Unknown> Search(string str)
     {
