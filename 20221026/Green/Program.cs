@@ -31,4 +31,15 @@ internal class Program
         Console.WriteLine(movie.Actors);
         Console.WriteLine(movie.Plot);
     }
+
+    static void MainMenu()
+    {
+        System.Console.WriteLine();
+        System.Console.WriteLine("1.Title bo'yicha qidirish");
+        System.Console.WriteLine("1.Toifa bo'yicha qidirish");
+    }
+    static void SearchToTitle()
+    {
+
+    }
 }
