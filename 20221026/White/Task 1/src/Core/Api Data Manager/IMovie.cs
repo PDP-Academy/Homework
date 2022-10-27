@@ -1,5 +1,5 @@
 namespace White.Core;
-internal interface IResult
+internal interface IMovie
 {
     /// <summary>
     /// Movie title
