@@ -9,13 +9,13 @@ class Program
 {
     static void Main(string[] args)
     {
-<<<<<<< HEAD
         SearchByName();
-=======
         // WallStreetJournal();
         Menu1();
->>>>>>> ba738a0fb49d55fe24c4417a7908e95c1085ca7a
     }
+
+
+
 
     static void SearchByName()
     {
@@ -32,15 +32,15 @@ class Program
         while (true)
         {
             Console.Clear();
-            for (; i < pagenation && i < json.TotalResults; i++)
+            for (; i < pagenation && i < json.totalResults; i++)
             {
-                Console.WriteLine($"{i + 1}. {json.Articles[i].title}");
+                Console.WriteLine($"{i + 1}. {json.articles[i].title}");
             }
-            Console.WriteLine($@"<<{pagenation / 10} - {json.TotalResults / 10}>>");
+            Console.WriteLine($@"<<{i / 10} - {json.totalResults / 10}>>");
             var key = Console.ReadKey().Key;
             if (pagenation == 1 && key == ConsoleKey.LeftArrow)
                 continue;
-            if (pagenation == json.TotalResults / 10 && ConsoleKey.RightArrow == key)
+            if (pagenation == json.totalResults / 10 && ConsoleKey.RightArrow == key)
                 continue;
             if (ConsoleKey.LeftArrow == key)
             {
@@ -74,11 +74,12 @@ class Program
         {
             case 1:
             {
+                ByCategory();
+                Menu1();
             } break;
             case 2:
             {
-                ByCategory();
-                Menu1();
+
             } break;
             case 3:
             {
