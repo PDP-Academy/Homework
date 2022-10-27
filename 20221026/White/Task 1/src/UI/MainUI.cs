@@ -27,7 +27,7 @@ internal class MainUI
     void SearchAndPrintByTitle(string title, int page = 1)
     {
         Console.WriteLine($"|{"T/R".ToString().PadRight(5)}|{"Title".PadRight(30)}|{"Type".PadRight(10)}|{"ImdbId".PadRight(10)}|");
-        List<Movie> movies = manager.SearchDataByTitle(title, page);
+        List<IResult> movies = manager.SearchDataByTitle(title, page);
         foreach ((var item, int index) in movies.Select((x, index) => (x, index)))
             PrintOneResult(item, index);
     }
