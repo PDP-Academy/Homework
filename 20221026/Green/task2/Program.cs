@@ -11,11 +11,44 @@ class Program
     {
 
 
+
         Menu1();
 
 
 
+
     }
+    static void MainMenu()
+    {
+        System.Console.WriteLine("1.SearchByName");
+        System.Console.WriteLine("2.WallStreetJournal");
+        System.Console.WriteLine("3.Source");
+        System.Console.WriteLine();
+        System.Console.Write("-->  ");
+        int change = Convert.ToInt32(Console.ReadLine());
+
+        switch (change)
+        {
+            case 1:
+            {
+                
+            } break;
+            case 2:
+            {
+                WallStreetJournal();
+            } break;
+            case 3:
+            {
+                Menu1();
+            } break;
+            default: break;
+        }
+    }
+
+
+
+    
+
 
     static void Menu1()
     {
