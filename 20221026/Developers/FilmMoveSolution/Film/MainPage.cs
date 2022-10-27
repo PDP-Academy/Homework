@@ -12,6 +12,7 @@ class MainPage
     
     public void Inputs()
     {
+tittle: 
         System.Console.Write("Tittle kiritasizmi?   Xa \\ Yoq ");
         string answer = Console.ReadLine();
         if (answer == "Xa" || answer == "xa")
@@ -19,18 +20,39 @@ class MainPage
             System.Console.Write("Tittle: ");
             this.t = Console.ReadLine();
         }
-        else
+        else if(answer == "Yoq" || answer == "yoq")
+        {
         System.Console.Write("Yilni kiritasizmi?  Xa \\ Yoq ");
         answer = Console.ReadLine();
+        }
+        else
+        {
+            System.Console.WriteLine("Xa yoki Yoq kiriting!");
+            Console.Clear();
+            Thread.Sleep(1500);
+            System.Console.WriteLine("Boshidan kiriting!");
+            goto tittle;
+        }
+ Yil1:      
         if(answer == "Xa" || answer == "xa")
         {
             System.Console.Write("Yil: ");
             this.y = Console.ReadLine();
         }
-        else if(answer == "Yoq" )
+        else if(answer == "Yoq" || answer == "yoq" )
         {
         System.Console.Write("Rating kiritasizmi? Xa \\ Yoq ");
         answer = Console.ReadLine();
+        }
+        else
+        {
+             System.Console.WriteLine("Xa yoki Yoq kiriting!");
+            Console.Clear();
+            Thread.Sleep(1500);
+            System.Console.WriteLine("Boshidan kiriting!");
+            System.Console.Write("Javob:       Xa \\ Yoq");
+            answer = Console.ReadLine();
+            goto Yil1;
         }
         if(answer == "Xa" || answer == "xa")
         {
@@ -38,11 +60,14 @@ class MainPage
             this.i = Console.ReadLine();
         }
         else
-            System.Console.WriteLine(""); /// ERTAGA OZIM DAVOM ETAMAN SAHAR BOMDODGA 8:00dan
-
-    
+            System.Console.WriteLine("Kuting..."); /// ERTAGA OZIM DAVOM ETAMAN SAHAR BOMDODGA 8:00dan
+    }
+    public string Filter()
+    {
+        return $"t={t}&y={y}&i={i}";
     }
 
+       
 
 }
     
