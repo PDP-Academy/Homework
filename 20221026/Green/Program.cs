@@ -62,4 +62,10 @@ internal class Program
     {
 
     }
+    static void SortedToType()
+    {
+        string url = "https://www.omdbapi.com/?s=Batman&page=2&apikey=";
+        
+        string myKey = "ca272312";
+    }
 }
