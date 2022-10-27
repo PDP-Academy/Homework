@@ -99,6 +99,8 @@ internal class Program
                 index++;
             else if (change == ConsoleKey.LeftArrow)
                 index--;
+            else if (change == ConsoleKey.Backspace)
+                MainMenu();
 
             Console.Clear();
         }
@@ -146,6 +148,7 @@ internal class Program
         Console.WriteLine("1.Movie");
         Console.WriteLine("2.Series");
         Console.WriteLine("3.Episode");
+        Console.WriteLine("0.Orqaga");
         System.Console.WriteLine();
         System.Console.WriteLine("-->  ");
         int change = Convert.ToInt32(Console.ReadLine());
@@ -167,11 +170,23 @@ internal class Program
                     Episode(episode);
                 }
                 break;
-            default: break;
+            case 0:
+                {
+                    MainMenu();
+                }
+                break;
+            default:
+                MainMenu();
+                break;
         }
     }
     static void MoviesSort(List<Movie> moviesSort)
     {
+        if (moviesSort.Count == 0)
+        {
+            System.Console.WriteLine("Movies toifasida topilmadi! ");
+            SortedToType();
+        }
         for (int i = 0; i < moviesSort.Count;)
         {
             System.Console.WriteLine("Title: " + moviesSort[i].Title);
@@ -185,12 +200,19 @@ internal class Program
                 i++;
             else if (change == ConsoleKey.LeftArrow && i != 0)
                 i--;
+            else if (change == ConsoleKey.Backspace)
+                SortedToType();
 
             Console.Clear();
         }
     }
     static void Series(List<Movie> series)
     {
+        if (series.Count == 0)
+        {
+            System.Console.WriteLine("Series toifasida topilmadi! ");
+            SortedToType();
+        }
         for (int i = 0; i < series.Count; i++)
         {
             System.Console.WriteLine("Title: " + series[i].Title);
@@ -204,12 +226,19 @@ internal class Program
                 i++;
             else if (change == ConsoleKey.LeftArrow)
                 i--;
+            else if (change == ConsoleKey.Backspace)
+                SortedToType();
 
             Console.Clear();
         }
     }
     static void Episode(List<Movie> episode)
     {
+        if (episode.Count == 0)
+        {
+            System.Console.WriteLine("Episode toifasida topilmadi! ");
+            SortedToType();
+        }
         for (int i = 0; i < episode.Count; i++)
         {
             System.Console.WriteLine("Title: " + episode[i].Title);
@@ -223,6 +252,8 @@ internal class Program
                 i++;
             else if (change == ConsoleKey.LeftArrow)
                 i--;
+            else if (change == ConsoleKey.Backspace)
+                SortedToType();
 
             Console.Clear();
         }
