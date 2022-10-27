@@ -298,6 +298,7 @@ namespace task2
             {
                 System.Console.WriteLine("\tOxirgi 6 oy ichida Wall Street Journal tomonidan chop etilgan barcha maqolalar," +
                     "\n\tso'nggi birinchisi bo'yicha saralangan!\n");
+
                 System.Console.WriteLine("Author: " + root.articles[i].author);
                 System.Console.WriteLine("content: " + root.articles[i].content);
                 System.Console.WriteLine("description: " + root.articles[i].description);
