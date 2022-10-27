@@ -1,11 +1,5 @@
 class MainPage
 {
-    public MainPage(string s, string y, string i)
-    {
-        this.s = s;
-        this.y = y;
-        this.i = i;
-    }
     public string s { get; set; } = null;
     public string y { get; set; } = null;
     public string i {get; set;} = null;
@@ -64,7 +58,11 @@ tittle:
     }
     public string Filter()
     {
-        return $"s={s}&y={y}&i={i}";
+        Inputs();
+        string str = "";
+        if(s != null)
+            str.Join("&",$"s={s}");
+        return $"&s={s}&y={y}&i={i}";
     }
 
        
