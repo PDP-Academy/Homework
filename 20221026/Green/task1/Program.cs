@@ -54,7 +54,8 @@ internal class Program
 
             default:
                 {
-
+                    Console.Clear();
+                    MainMenu();
                 }
                 break;
         }
@@ -189,8 +190,8 @@ internal class Program
         }
         for (int i = 0; i < moviesSort.Count;)
         {
-            System.Console.WriteLine("Title: " + moviesSort[i].Title);
-            System.Console.WriteLine("Type: " + moviesSort[i].Type);
+            System.Console.Write("Title: " + moviesSort[i].Title);
+            System.Console.Write("Type: " + moviesSort[i].Type);
             System.Console.WriteLine();
             System.Console.WriteLine($"{i + 1} / {moviesSort.Count}");
 
@@ -215,8 +216,8 @@ internal class Program
         }
         for (int i = 0; i < series.Count; i++)
         {
-            System.Console.WriteLine("Title: " + series[i].Title);
-            System.Console.WriteLine("Type: " + series[i].Type);
+            System.Console.Write("Title: " + series[i].Title);
+            System.Console.Write("Type: " + series[i].Type);
             System.Console.WriteLine();
             System.Console.WriteLine($"{i + 1} / {series.Count}");
 
@@ -241,8 +242,8 @@ internal class Program
         }
         for (int i = 0; i < episode.Count; i++)
         {
-            System.Console.WriteLine("Title: " + episode[i].Title);
-            System.Console.WriteLine("Type: " + episode[i].Type);
+            System.Console.Write("Title: " + episode[i].Title);
+            System.Console.Write("Type: " + episode[i].Type);
             System.Console.WriteLine();
             System.Console.WriteLine($"{i + 1} / {episode.Count}");
 
