@@ -102,7 +102,7 @@ namespace task2
 
                 if (change == ConsoleKey.RightArrow && i < result - 1)
                     i++;
-                else if (change == ConsoleKey.LeftArrow && i != 0)
+                else if (change == ConsoleKey.LeftArrow && i > 0)
                     i--;
                 else if (change == ConsoleKey.Backspace)
                 {
@@ -278,6 +278,8 @@ namespace task2
             string url = "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=127ae4cb4c7b48c6b55c840fcba43f88";
 
             HttpClient client = new HttpClient();
+
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (compatible; AcmeInc/1.0)");
             client.BaseAddress = new Uri(url);
 
             var response = client.GetAsync(url).Result;
@@ -295,6 +297,8 @@ namespace task2
 
             for (int i = 0; i < result;)
             {
+                System.Console.WriteLine("\tOxirgi 6 oy ichida Wall Street Journal tomonidan chop etilgan barcha maqolalar," +
+                    "\n\tso'nggi birinchisi bo'yicha saralangan!\n");
                 System.Console.WriteLine("Author: " + root.articles[i].author);
                 System.Console.WriteLine("content: " + root.articles[i].content);
                 System.Console.WriteLine("description: " + root.articles[i].description);
