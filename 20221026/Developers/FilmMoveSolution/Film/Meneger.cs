@@ -13,6 +13,7 @@ class Meneger
         var temp2 = temp.Content.ReadAsStringAsync().Result;
         return JsonSerializer.Deserialize<Result>(temp2);
     }
+    
 }
 
 
