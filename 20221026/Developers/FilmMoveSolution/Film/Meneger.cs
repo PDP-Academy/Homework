@@ -14,3 +14,5 @@ class Meneger
         return JsonSerializer.Deserialize<Result>(temp2);
     }
 }
+
+

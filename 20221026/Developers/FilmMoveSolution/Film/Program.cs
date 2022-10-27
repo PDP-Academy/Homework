@@ -1,6 +1,6 @@
 ﻿Meneger meneger = new Meneger();
 MainPage mainPage = new MainPage();
-string path = "&s=Tor";
+string path = mainPage.Filter();;
 var temp = meneger.Search(path);
 int k = int.Parse(temp.totalResults);
 if(k % 10 == 0)
