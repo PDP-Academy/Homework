@@ -57,7 +57,7 @@ class Program
     {
         string url = "https://newsapi.org/v2/top-headlines/sources?";
 
-        string apiKey = "apiKey=ebfcc5d8f7b745f78205156776824331";
+        string apiKey = "&apiKey=ebfcc5d8f7b745f78205156776824331";
 
         System.Console.WriteLine("1. Business.");
         System.Console.WriteLine("2.Entertainment.");
@@ -75,31 +75,31 @@ class Program
         {
             case 1:
             {
-                category = "category=business";
+                category = "&category=business";
             } break;
             case 2:
             {
-                category += "category=entertainment";
+                category += "&category=entertainment";
             } break;
             case 3:
             {
-                category += "category=general";
+                category += "&category=general";
             } break;
             case 4:
             {
-                category += "category=health";
+                category += "&category=health";
             } break;
             case 5:
             {
-                category += "category=science";
+                category += "&category=science";
             } break;
             case 6:
             {
-                category += "category=sports";
+                category += "&category=sports";
             } break;
             case 7:
             {
-                category += "category=technology";
+                category += "&category=technology";
             } break;
 
             default:
@@ -122,27 +122,26 @@ class Program
 
         var root = JsonSerializer.Deserialize<Root>(contentString, option);
 
-        int result = root.totalResults;
+        var sourceList = root.sources;
 
-        for (int i = 0; i < result;)
+        for (int i = 0; i < sourceList.Count; )
         {
-            System.Console.WriteLine("Author: " + root.articles[i].author);
-            System.Console.WriteLine("content: " + root.articles[i].content);
-            System.Console.WriteLine("description: " + root.articles[i].description);
-            System.Console.WriteLine("publishedAt: " + root.articles[i].publishedAt);
-            System.Console.WriteLine("ID: " + root.articles[i].source.id);
-            System.Console.WriteLine("Name: " + root.articles[i].source.name);
-            System.Console.WriteLine("Title: " + root.articles[i].title);
-            System.Console.WriteLine("Url: " + root.articles[i].url);
-            System.Console.WriteLine("UrlToImage: " + root.articles[i].urlToImage);
+            System.Console.WriteLine("Name: " + sourceList[i].name);
+            System.Console.WriteLine("Id: " + sourceList[i].id);
+            System.Console.WriteLine("Language: " + sourceList[i].language);
+            System.Console.WriteLine("Url: " + sourceList[i].url);
+            System.Console.WriteLine("Description: " + sourceList[i].description);
+            System.Console.WriteLine("Category: " + sourceList[i].category);
+            System.Console.WriteLine("Country: " + sourceList[i].country);
+            
             System.Console.WriteLine();
-            System.Console.WriteLine($"{i + 1} / {result}");
+            System.Console.WriteLine($"{i + 1} / {sourceList.Count}");
 
             var change2 = Console.ReadKey().Key;
 
-            if (change2 == ConsoleKey.RightArrow)
+            if (change2 == ConsoleKey.RightArrow && i < sourceList.Count - 1)
                 i++;
-            else if (change2 == ConsoleKey.LeftArrow && i != 0)
+            else if (change2 == ConsoleKey.LeftArrow && i > 0)
                 i--;
             else if (change2 == ConsoleKey.Backspace)
                 return;
