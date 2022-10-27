@@ -1,11 +1,5 @@
 class MainPage
 {
-    public MainPage(string t, string y, string i)
-    {
-        this.t = t;
-        this.y = y;
-        this.i = i;
-    }
     public string t { get; set; } = null;
     public string y { get; set; } = null;
     public string i {get; set;} = null;
