@@ -1,3 +1,4 @@
+namespace task2;
 public class Root
     {
         public string status { get; set; }
