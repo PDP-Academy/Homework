@@ -466,5 +466,56 @@ namespace task2
                 }break;
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        static void SearchByCountry()
+        {
+            //string[] countri
+            //aearataubebgbrcachcncocuczdeegfrgbgrhkhuidieilin
+            
+
+        }
     }
 }
