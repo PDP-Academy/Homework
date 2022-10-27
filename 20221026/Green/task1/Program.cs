@@ -54,7 +54,7 @@ internal class Program
 
             default:
                 {
-
+                    MainMenu();
                 }
                 break;
         }
