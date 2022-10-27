@@ -28,4 +28,6 @@ for (int i = 1; i <= k; i++)
         i -= 2;
         else
         i--;
+    else
+        i--;
 }

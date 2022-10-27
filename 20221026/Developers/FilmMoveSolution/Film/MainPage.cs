@@ -54,7 +54,6 @@ tittle:
     {
         Inputs();
         string str = "";
-        if(s != null)
             str = str + "&" + $"s={s}";
         // if(y != null)
         //     str = str + "&" + $"y={y}";
