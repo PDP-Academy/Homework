@@ -39,7 +39,7 @@ class Unknown
         return $"Type:{Type}\n"+
         $"Title:{Title}\n"+
         $"Language:{Language}\n"+
-        $" Country:{Country}\n"+
+        $"Country:{Country}\n"+
         $"Year:{Year}\n";
     }
 
