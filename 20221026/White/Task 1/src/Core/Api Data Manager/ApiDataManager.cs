@@ -17,8 +17,13 @@ internal class ApiDataManager : IApiDataManager
     }
 
 
-    public List<object> SearchDataByTitle(string title, int page)
+    public List<IResult> SearchDataByTitle(string title, int page)
     {
-        
+        HttpClient client = new HttpClient();
+        string url = ApiUrl + "?s" + title + "&page=" + page.ToString();
+        var response = client.GetAsync(url).Result;
+        var data = response.Content.ReadAsStringAsync().Result;
+        var allMovies = JsonSerializer.Deserialize<IPageResult>(data);
+            return allMovies.Results;
     }
 }
