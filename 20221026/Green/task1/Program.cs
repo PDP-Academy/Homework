@@ -24,6 +24,7 @@ internal class Program
             PropertyNameCaseInsensitive = true
         };
 
+
         MainMenu();
 
     }
@@ -33,10 +34,19 @@ internal class Program
         System.Console.WriteLine();
         System.Console.WriteLine("1.Title bo'yicha qidirish");
         System.Console.WriteLine("2.Toifa bo'yicha saralash");
-        System.Console.WriteLine();
+ 
         System.Console.Write("-->  ");
 
-        int change = Convert.ToInt32(Console.ReadLine());
+        int change = 0;
+        try
+        {
+            change = Convert.ToInt32(Console.ReadLine());
+        } catch (FormatException exception)
+        {
+            Console.Clear();
+            Console.WriteLine(exception.Message);
+            MainMenu();
+        }
 
         switch (change)
         {
@@ -70,12 +80,14 @@ internal class Program
 
         IManagerAPI managerAPI = new ManagerAPI();
 
-        Console.Write("title: ");
-        title += Console.ReadLine();
-        int pages = 10;
+        Console.Write("\ntitle: ");
+        string searchTitle = Console.ReadLine();
+        title += searchTitle;
+        int pages = 1;
 
-        while (index <= pages / 10 && index > 0)
+        while (index <= pages && index >= 0)
         {
+            Console.WriteLine(" == Search results for " + searchTitle + " == \n");
             string newUrl = url + title + pageStr + $"{index}" + myKey;
             string contentString = managerAPI.GetContentString(newUrl);
 
@@ -84,27 +96,35 @@ internal class Program
                 PropertyNameCaseInsensitive = true
             };
             var search = JsonSerializer.Deserialize<Search>(contentString, option);
+            if (bool.Parse(search.Response) is false )
+            {
+                Console.Clear();
+                Console.WriteLine($"Response: {search.Response} , Error: {search.Error}");
+                SearchByTitle();
+            }
 
             var moviesList = search.Movies;
-            pages = int.Parse(search.TotalResults);
+            pages = int.Parse(search.TotalResults) / 10 + 1;
 
             foreach (var item in moviesList)
             {
-                Console.WriteLine("  Title: " + item.Title);
+                Console.WriteLine("  Title: " + item.Title + " , Year: " + item.Year);
             }
-            Console.Write($"\t{index}/{pages / 10}");
-
+            Console.WriteLine($"\t{index}/{pages}");
+            Console.WriteLine("Return to menu: backspace");
             var change = Console.ReadKey().Key;
 
-            if (change == ConsoleKey.RightArrow)
+            if (change == ConsoleKey.RightArrow && index < pages)
                 index++;
-            else if (change == ConsoleKey.LeftArrow)
+            else if (change == ConsoleKey.LeftArrow && index > 1)
                 index--;
             else if (change == ConsoleKey.Backspace)
                 MainMenu();
 
             Console.Clear();
         }
+        Console.Clear();
+        MainMenu();
     }
     static void SortedToType()
     {
@@ -150,9 +170,20 @@ internal class Program
         Console.WriteLine("2.Series");
         Console.WriteLine("3.Episode");
         Console.WriteLine("0.Orqaga");
-        System.Console.WriteLine();
+        
         System.Console.WriteLine("-->  ");
-        int change = Convert.ToInt32(Console.ReadLine());
+
+        int change = 0;
+
+        try
+        {
+            change = Convert.ToInt32(Console.ReadLine());
+        } catch (FormatException exception)
+        {
+            Console.Clear();
+            Console.WriteLine(exception.Message);
+            MainMenu();
+        }
 
         switch (change)
         {
