@@ -144,7 +144,7 @@ namespace task2
                     break;
                 case 4:
                     {
-
+                        SearchByCountry();
                     }
                     break;
 
@@ -495,50 +495,97 @@ namespace task2
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         static void SearchByCountry()
         {
-            //string[] countri
-            //aearataubebgbrcachcncocuczdeegfrgbgrhkhuidieilin
+            string[] countries = new string[]
+            {
+                "ar",
+                "au",
+                "br",
+                "ca",
+                "de",
+                "fr",
+                "gb",
+                "ie",
+                "in",
+                "us",
+                "ru"
+            };
+            for (int i = 0; i < countries.Length; i++)
+            {
+                Console.WriteLine($"{i+1} - {countries[i]}");
+            }
+            Console.Write("Change: ");
+            int item = 0;
             
+            try
+            {
+                item = int.Parse(Console.ReadLine());
+                if (item > countries.Length)
+                    throw new NotFoundItemException("Not fount item exception");
+
+            } catch (FormatException exception)
+            {
+                Console.Clear();
+                Console.WriteLine(exception.Message);
+                SourceMunu();
+            }
+            catch (NotFoundItemException exception)
+            {
+                Console.Clear();
+                Console.WriteLine(exception.Message);
+                SourceMunu();
+            }
+
+            string url = $"https://newsapi.org/v2/top-headlines/sources?country={countries[item - 1]}" +
+                $"&apiKey=127ae4cb4c7b48c6b55c840fcba43f88";
+
+            HttpClient client = new HttpClient();
+
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (compatible; AcmeInc/1.0)");
+
+            client.BaseAddress = new Uri(url);
+
+            var response = client.GetAsync(url).Result;
+            var contentString = response.Content.ReadAsStreamAsync().Result;
+
+            var option = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
+
+            var root = JsonSerializer.Deserialize<Root>(contentString, option);
+
+            var sourceList = root.sources;
+
+            for (int i = 0; i < sourceList.Count; )
+            {
+                Console.Clear();
+                Console.WriteLine(" == Search by country results == \n");
+                var result = sourceList[i];
+
+                Console.WriteLine($"Id: {result.id}");
+                Console.WriteLine($"Name: {result.name}");
+                Console.WriteLine($"Country: {result.country}");
+                Console.WriteLine($"Description: {result.description}");
+                Console.WriteLine($"Language: {result.language}");
+                Console.WriteLine($"Url: {result.url}\n");
+
+                Console.WriteLine($"{i + 1} / {sourceList.Count}");
+
+                var change2 = Console.ReadKey().Key;
+
+                if (change2 == ConsoleKey.RightArrow && i < sourceList.Count - 1)
+                    i++;
+                else if (change2 == ConsoleKey.LeftArrow && i > 0)
+                    i--;
+                else if (change2 == ConsoleKey.Backspace)
+                {
+                    Console.Clear();
+                    MainMenu();
+                }
+
+            }
+            Console.Clear();
+            Console.WriteLine("Data not available...");
+            MainMenu();
 
         }
     }
