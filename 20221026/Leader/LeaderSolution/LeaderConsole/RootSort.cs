@@ -18,5 +18,11 @@ namespace LeaderConsole
         public string Type { get; set; }
         public string Production { get; set; }
         public string Response { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format("{0,28}|{1,10}|{2,30}|{3,30}|{4,25}|{5,35}|{6,10}|{7,10}|{8,10}|", Title, Year, Genre, Director, Language, Country, Type,Production, Response);
+
+        }
     }
 }
