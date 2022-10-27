@@ -1,8 +1,8 @@
 class MainPage
 {
-    public string s { get; set; } = null;
-    public string y { get; set; } = null;
-    public string i {get; set;} = null;
+    public string s { get; set; } = null; // filmni nomi 
+    public string y { get; set; } = null; // filmni yili
+    public string i {get; set;} = null; // filmni IMBDmi
     
     public void Inputs()
     {
@@ -61,8 +61,13 @@ tittle:
         Inputs();
         string str = "";
         if(s != null)
-            str.Join("&",$"s={s}");
-        return $"&s={s}&y={y}&i={i}";
+            str = str + "&" + $"s={s}";
+        if(y != null)
+            str = str + "&" + $"y={y}";
+        if(i != null)
+            str = str + "&" + $"i={i}";
+
+        return str;
     }
 
        
