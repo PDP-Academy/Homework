@@ -2,7 +2,8 @@ namespace White.Core;
 
 class Manager : Imeneger
 {
-    public override List<Object> SearchDataByTitle(string title, int page)
+    IApiDataManager manager;
+    public List<Object> SearchDataByTitle(string title, int page)
     {
 
     }
