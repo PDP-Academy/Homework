@@ -15,10 +15,9 @@ class Meneger
         var temp2 = temp.Content.ReadAsStringAsync().Result;
         return JsonSerializer.Deserialize<List<Unknown>>(temp2);
     }
-
-    public Tuple<List<Unknown>,List<Unknown>,List<Unknown>> SortedToList(List<Unknown>instance)
+    public (List<Unknown>,List<Unknown>,List<Unknown>) SortedToList(List<Unknown>instance)
     {
-        Tuple<List<Unknown>,List<Unknown>,List<Unknown>>sortedList;//=;//new Tuple(List<Unknown>, List<Unknown>, List<Unknown>();
+        (List<Unknown>,List<Unknown>,List<Unknown>) sortedList = new (new List<Unknown>(),new List<Unknown>(),new List<Unknown>());
         for(int i=0;i<instance.Count;i++)
         {
             System.Console.WriteLine();

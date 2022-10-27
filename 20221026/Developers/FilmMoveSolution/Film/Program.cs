@@ -1,6 +1,5 @@
 ﻿Meneger meneger = new Meneger();
-static void SHow(List<Unknown  
-    > list)
+static void SHow(List<Unknown> list)
 {
     for (int i = 0; i < list.Count; i++)
     {
