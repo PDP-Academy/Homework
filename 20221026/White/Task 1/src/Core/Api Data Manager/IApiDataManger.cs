@@ -1,7 +1,7 @@
 namespace White.Core;
 
 internal interface IApiDataManager
-{
+{   
     /// <summary>
     /// Title bo'yicha qidirish
     /// </summary>
