@@ -8,7 +8,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        string url = "https://www.omdbapi.com/?s=Batman&page=2&apikey=";
+        string url = "https://www.omdbapi.com/?t=Bn&page=&apikey=";
         
         string myKey = "ca272312";
 
@@ -58,8 +58,36 @@ internal class Program
             }
         }
     }
-    static void SearchToTitle()
+    static void SearchByTitle()
     {
+        string url = "https://www.omdbapi.com/?";
+        string title = "&s=";
+        string page = "&page=";
+        string myKey = "&apikey=ca272312";
+
+        Console.Write("title: ");
+        title += Console.ReadLine();
+
+        url = url + title + page + "1" + myKey;
+
+        HttpClient client = new HttpClient();
+        client.BaseAddress = new Uri(url);
+
+        var response = client.GetAsync(url).Result;
+        var contentString = response.Content.ReadAsStringAsync().Result;
+
+        var option = new JsonSerializerOptions()
+        {
+            PropertyNameCaseInsensitive = true
+        };
+        var search = JsonSerializer.Deserialize<Search>(contentString, option);
+
+        var moviesList = search.Movies;
+
+        foreach (var item in moviesList)
+        {
+            Console.WriteLine(item.Title);
+        }
 
     }
     static void SortedToType()
