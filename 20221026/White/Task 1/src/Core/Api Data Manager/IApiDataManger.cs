@@ -8,5 +8,5 @@ internal interface IApiDataManager
     /// <param name="title">qidirish uchun kalit so'z</param>
     /// <param name="page">qidiriligan malumotni pagei </param>
     /// <returns></returns>
-    public List<IResult> SearchDataByTitle(string title, int page);
+    public List<Movie> SearchDataByTitle(string title, int page);
 }

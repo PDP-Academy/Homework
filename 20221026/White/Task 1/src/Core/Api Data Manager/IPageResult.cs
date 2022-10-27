@@ -1,4 +1,5 @@
-﻿
+﻿using System.Text.Json.Serialization;
+
 namespace White.Core
 {
     internal interface IPageResult
@@ -15,7 +16,7 @@ namespace White.Core
         /// <summary>
         /// Resultlari listi
         /// </summary>
-
-        public List<IResult> Results { get; set; }
+        
+        public List<Movie> Results { get; set; }
     }
 }

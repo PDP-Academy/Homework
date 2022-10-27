@@ -3,15 +3,15 @@ namespace White.Core;
 class Manager : Imeneger
 {
     IApiDataManager manager = new ApiDataManager();
-    public List<IResult> SearchDataByTitle(string title, int page)
+    public List<Movie> SearchDataByTitle(string title, int page)
     {
-        List<IResult> list = manager.SearchDataByTitle(title, page);
+        List<Movie> list = manager.SearchDataByTitle(title, page);
         return SortDataByType(list);
 
     }
-    public List<IResult> SortDataByType(List<IResult> list)
+    public List<Movie> SortDataByType(List<Movie> list)
     {
-        List<IResult> temp = new List<IResult>();
+        List<Movie> temp = new List<Movie>();
         foreach (var item in list)
         {
             if (item.Type == "movie")

@@ -12,7 +12,7 @@ internal interface IResult
     /// <summary>
     /// Movie Idsi
     /// </summary>
-    public string ImdbId { get; set; }
+    public string imdbID { get; set; }
     /// <summary>
     /// Movi turi
     /// </summary>
