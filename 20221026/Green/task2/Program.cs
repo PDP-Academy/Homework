@@ -105,7 +105,10 @@ namespace task2
                 else if (change == ConsoleKey.LeftArrow && i != 0)
                     i--;
                 else if (change == ConsoleKey.Backspace)
-                    return;
+                {
+                    Console.Clear();
+                    MainMenu();
+                }
 
                 Console.Clear();
             }
