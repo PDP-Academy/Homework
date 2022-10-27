@@ -92,8 +92,10 @@ internal class Program
     }
     static void SortedToType()
     {
-        string url = "https://www.omdbapi.com/?s=Batman&page=2&apikey=";
+        string url = "https://www.omdbapi.com/?";
         
-        string myKey = "ca272312";
+        List<Movie> movies = new List<Movie>();
+        List<Movie> series = new List<Movie>();
+        List<Movie> episode = new List<Movie>();
     }
 }
