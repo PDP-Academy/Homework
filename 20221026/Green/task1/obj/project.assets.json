@@ -8,19 +8,23 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\hp\\.nuget\\packages\\": {}
+    "C:\\Users\\Evoo\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hp\\Desktop\\Homework\\20221026\\Green\\Task1\\Task1.csproj",
+      "projectUniqueName": "C:\\Users\\Evoo\\Desktop\\Homework\\20221026\\Green\\task1\\Task1.csproj",
       "projectName": "Task1",
-      "projectPath": "C:\\Users\\hp\\Desktop\\Homework\\20221026\\Green\\Task1\\Task1.csproj",
-      "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hp\\Desktop\\Homework\\20221026\\Green\\Task1\\obj\\",
+      "projectPath": "C:\\Users\\Evoo\\Desktop\\Homework\\20221026\\Green\\task1\\Task1.csproj",
+      "packagesPath": "C:\\Users\\Evoo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Evoo\\Desktop\\Homework\\20221026\\Green\\task1\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Evoo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
