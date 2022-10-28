@@ -1,21 +1,19 @@
 ﻿using static LeaderConsole.Api;
 
-namespace LeaderConsole
+namespace LeaderConsole;
+
+internal class Api
 {
-    internal class Api
+    public string GetContentString(string url)
     {
+        HttpClient client = new HttpClient();
 
-        public string GetContentString(string url)
-        {
-            HttpClient client = new HttpClient();
+        client.BaseAddress = new Uri(url);
 
-            client.BaseAddress = new Uri(url);
+        var response = client.GetAsync(url).Result;
+        var contentString = response.Content.ReadAsStringAsync().Result;
 
-            var response = client.GetAsync(url).Result;
-            var contentString = response.Content.ReadAsStringAsync().Result;
-
-            return contentString;
-        }
+        return contentString;
     }
-    
 }
+

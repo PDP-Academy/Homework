@@ -21,7 +21,7 @@ public class Prgram
 
         var option = new JsonSerializerOptions()
         {
-            PropertyNameCaseInsensitive = true
+            PropertyNameCaseInsensitive = true 
         };
 
         MainMenu();
