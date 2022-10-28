@@ -119,7 +119,7 @@ namespace task2
             {
                 case 1:
                     {
-
+                        AllSources();
                     }
                     break;
                 case 2:
@@ -306,6 +306,61 @@ namespace task2
                     i--;
                 else if (change == ConsoleKey.Backspace)
                     return;
+
+                Console.Clear();
+            }
+        }
+        static void AllSources()
+        {
+            string newUrl = "https://newsapi.org/v2/top-headlines/sources?apiKey=127ae4cb4c7b48c6b55c840fcba43f88";
+
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(newUrl);
+
+            var response = client.GetAsync(newUrl).Result;
+
+            string contentString = response.Content.ReadAsStringAsync().Result;
+
+            var option = new JsonSerializerOptions()
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
+            var root = JsonSerializer.Deserialize<Root>(contentString, option);
+
+            if (root.status is "error")
+            {
+                Console.Clear();
+                Console.WriteLine(root.message);
+                ByCategory();
+            }
+
+            var sourceList = root.sources;
+
+            for (int i = 0; i < sourceList.Count;)
+            {
+                System.Console.WriteLine("Name: " + sourceList[i].name);
+                System.Console.WriteLine("Id: " + sourceList[i].id);
+                System.Console.WriteLine("Language: " + sourceList[i].language);
+                System.Console.WriteLine("Url: " + sourceList[i].url);
+                System.Console.WriteLine("Description: " + sourceList[i].description);
+                System.Console.WriteLine("Category: " + sourceList[i].category);
+                System.Console.WriteLine("Country: " + sourceList[i].country);
+
+                System.Console.WriteLine();
+                System.Console.WriteLine($"{i + 1} / {sourceList.Count}");
+
+                var change2 = Console.ReadKey().Key;
+
+                if (change2 == ConsoleKey.RightArrow && i < sourceList.Count - 1)
+                    i++;
+                else if (change2 == ConsoleKey.LeftArrow && i > 0)
+                    i--;
+                else if (change2 == ConsoleKey.Backspace)
+                {
+
+                    return;
+                }
 
                 Console.Clear();
             }
