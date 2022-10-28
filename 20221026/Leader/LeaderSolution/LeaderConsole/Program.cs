@@ -12,7 +12,28 @@ public class Prgram
         Menu();
     }   
 
+<<<<<<< HEAD
+        string myKey = "ca272312";
+
+        HttpClient client = new HttpClient();
+        client.BaseAddress = new Uri(url + myKey);
+
+        var response = client.GetAsync(url + myKey).Result;
+        var contentString = response.Content.ReadAsStringAsync().Result;
+
+        var option = new JsonSerializerOptions()
+        {
+            PropertyNameCaseInsensitive = true 
+        };
+
+        MainMenu();
+
+    }
+
+    static void MainMenu()
+=======
     static void Menu()
+>>>>>>> d3518b82149e559f573d0eb38271302627cdd6c2
     {
         Console.Clear();
         Console.WriteLine("1.Random kino olish\n" +
