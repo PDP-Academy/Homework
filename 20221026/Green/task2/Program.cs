@@ -154,7 +154,7 @@ class Program
     }
     static void WallStreetJournal()
     {
-        System.Console.WriteLine("Oxirgi 6 oy ichida Wall Street Journal tomonidan chop etilgan barcha maqolalar,\nso'nggi birinchisi bo'yicha saralangan!");
+        System.Console.WriteLine("\tOxirgi 6 oy ichida Wall Street Journal tomonidan chop etilgan barcha maqolalar,\n\tso'nggi birinchisi bo'yicha saralangan!\n");
 
         string url = "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=ebfcc5d8f7b745f78205156776824331";
 
@@ -190,7 +190,7 @@ class Program
 
             var change = Console.ReadKey().Key;
 
-            if (change == ConsoleKey.RightArrow)
+            if (change == ConsoleKey.RightArrow && i < result - 1)
                 i++;
             else if (change == ConsoleKey.LeftArrow && i != 0)
                 i--;
