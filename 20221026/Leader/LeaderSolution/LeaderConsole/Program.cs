@@ -5,12 +5,14 @@ using System.Text.Json;
 namespace LeaderConsole;
 public class Prgram
 {
-    
-
-    private static void Main(string[] args)
+    static string url = "http://www.omdbapi.com/?";
+    static string key = "apikey=d38abc50";
+    static void Main(string[] args)
     {
-        string url = "https://www.omdbapi.com/?t=Bn&&apikey=";
+        Menu();
+    }   
 
+<<<<<<< HEAD
         string myKey = "ca272312";
 
         HttpClient client = new HttpClient();
@@ -29,97 +31,118 @@ public class Prgram
     }
 
     static void MainMenu()
+=======
+    static void Menu()
+>>>>>>> d3518b82149e559f573d0eb38271302627cdd6c2
     {
+        Console.Clear();
+        Console.WriteLine("1.Random kino olish\n" +
+            "2.Title bo'yicha qidirish\n" +
+            "Any number.Exit");
 
-        Console.WriteLine("\n\t1.Title bo'yicha qidirish");
-        Console.WriteLine("\t2.Toifa bo'yicha qidirish\n");
-        
-        Console.Write("-->  ");
+        int key = Convert.ToInt32(Console.ReadLine());
 
-        int change = Convert.ToInt32(Console.ReadLine());
-
-        switch (change)
+        switch(key)
         {
             case 1:
-                {
-                    SearchByTitle();
-                }
+                SortByType();
                 break;
-
             case 2:
-                {
-
-                }
+                SearchByTitle();
                 break;
-
             default:
-                {
-
-                }
-                break;
+                return;
         }
     }
+
     static void SearchByTitle()
     {
-        string url = "https://www.omdbapi.com/?";
-        string title = "s=";
-        string pageStr = "&page=";
-        string myKey = "&apikey=ca272312";
-        int index = 1;
+        Console.Clear();
+        Console.Write("Title : ");
+        string title = Console.ReadLine();
+        Console.Clear();
 
-        Api managerAPI = new Api();
-
-        Console.Write("title: ");
-        title += Console.ReadLine();
-        int pages = 10;
-
-        while (index <= pages / 10 && index > 0)
+        int i = 1;
+        while (true)
         {
-            string newUrl = url + title + pageStr + $"{index}" + myKey;
-            string contentString = managerAPI.GetContentString(newUrl);
+            string urlForSearch = url + "s=" + title + "&" + "page=" + i + "&" + key;
 
-            var option = new JsonSerializerOptions()
+            HttpClient client = new HttpClient();
+
+            var response = client.GetAsync(urlForSearch).Result;
+
+            var contentString = response.Content.ReadAsStringAsync().Result;
+
+            var serializationOption = new JsonSerializerOptions()
             {
                 PropertyNameCaseInsensitive = true
             };
-            var search = JsonSerializer.Deserialize<Search>(contentString, option);
 
-            var moviesList = search.Movies;
-            pages = int.Parse(search.TotalResults);
+            RootSearch rootSearch = JsonSerializer.Deserialize<RootSearch>(contentString, serializationOption);
 
-            foreach (var item in moviesList)
+            Console.WriteLine($"============================================================ {i} ===============================================================\n");
+            Console.WriteLine(String.Format("{0,15}|{1,10}|{2,95}|", "Total result", "Response", "Information of Search"));
+
+           
+            Console.WriteLine(String.Format("{0,15}|{1,10}|{2,95}|", rootSearch.totalResults,rootSearch.Response, String.Format("{0,10}|{1,10}|{2,10}|{3,10}", "Title","imdbID","Year", "Type")));
+        
+            foreach(var search in rootSearch.Search)
             {
-                Console.WriteLine("  Title: " + item.Title);
+                Console.WriteLine(String.Format("{0,15}|{1,10}|{2,95}|", "", "", String.Format("{0,10}|{1,10}|{2,10}|{3,10}", search.Title, search.imdbID, search.Year,search.Type)));
             }
-            Console.Write($"\t{index}/{pages / 10}");
+            
 
             var change = Console.ReadKey().Key;
 
             if (change == ConsoleKey.RightArrow)
-                index++;
-            else if (change == ConsoleKey.LeftArrow)
-                index--;
-
+                i++;
+            else if (change == ConsoleKey.LeftArrow && i - 1 > 0)
+                i--;
+            else if (change == ConsoleKey.Backspace)
+                Menu();
             Console.Clear();
+
         }
     }
-    static void SortedToType()
+    static void SortByType()
     {
-        string url = "https://www.omdbapi.com/?";
-        string title = "s=";
-        string type = "type=";
-        string pageStr = "&page=";
-        string myKey = "&apikey=ca272312";
 
-        List<Movie> movies = new List<Movie>();
-        Api managerAPI = new Api();
+        Console.Write("Title : ");
+        string series = Console.ReadLine();
+        int i = 1;
+        while (true)
+        {
+            string urlForSearch = url + "&page=" + i + "&t=" + series + "&"  + key;
+            Console.WriteLine(urlForSearch);
 
-        Console.Write("title: ");
-        title += Console.ReadLine();
-        Console.WriteLine("1.Movie");
-        Console.WriteLine("2.");
+            HttpClient client = new HttpClient();
 
+            var response = client.GetAsync(urlForSearch).Result;
 
+            var contentString = response.Content.ReadAsStringAsync().Result;
+
+            var serializationOption = new JsonSerializerOptions()
+            {
+                PropertyNameCaseInsensitive = true
+            };
+
+            RootSort rootSort = JsonSerializer.Deserialize<RootSort>(contentString, serializationOption);
+
+            Console.WriteLine(String.Format("{0,28}|{1,10}|{2,30}|{3,30}|{4,25}|{5,35}|{6,10}|{7,10}|{8,10}|", "Title", "Year", "Genre", "Director", "Language", "Country", "Type", "Production", "Responce"));
+               
+            Console.WriteLine(rootSort.ToString());
+
+            var change = Console.ReadKey().Key;
+
+            if (change == ConsoleKey.RightArrow )
+                i++;
+            else if (change == ConsoleKey.LeftArrow && i - 1 > 0)
+                i--;
+            else if (change == ConsoleKey.Backspace)
+                Menu();
+            Console.Clear();
+            
+        }
 
     }
-}
+} 
