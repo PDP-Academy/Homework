@@ -332,7 +332,7 @@ namespace task2
             {
                 Console.Clear();
                 Console.WriteLine(root.message);
-                ByCategory();
+                MainMenu();
             }
 
             var sourceList = root.sources;
@@ -358,8 +358,7 @@ namespace task2
                     i--;
                 else if (change2 == ConsoleKey.Backspace)
                 {
-
-                    return;
+                    MainMenu();
                 }
 
                 Console.Clear();
