@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Text.Json;
 using System.Text;
 using System.IO;
-using System.Text.Json;
 using System.Text.Json.Serialization;
 namespace task2;
 
@@ -9,12 +9,54 @@ class Program
 {
     static void Main(string[] args)
     {
+        SearchByName();
         // WallStreetJournal();
         Menu1();
     }
 
-    static void SearchByName(string name)
+
+
+
+    static void SearchByName()
     {
+        Console.Write("Value kiriting: ");
+        string name = Console.ReadLine();
+        string url = $@"https://newsapi.org/v2/everything?q={name}&apiKey=e20df51e594a4b7daae76ca0ce171f4e";
+        HttpClient client = new HttpClient();
+        var response = client.GetAsync(url).Result;
+        var content = response.Content.ReadAsStringAsync().Result;
+        var json = JsonSerializer.Deserialize<Root>(content, new JsonSerializerOptions() {PropertyNameCaseInsensitive = true });
+        int pagenation = 10;
+        int i = 0;
+        Console.WriteLine(url);
+        while (true)
+        {
+            Console.Clear();
+            for (; i < pagenation && i < json.totalResults; i++)
+            {
+                Console.WriteLine($"{i + 1}. {json.articles[i].title}");
+            }
+            Console.WriteLine($@"<<{i / 10} - {json.totalResults / 10}>>");
+            var key = Console.ReadKey().Key;
+            if (pagenation == 1 && key == ConsoleKey.LeftArrow)
+                continue;
+            if (pagenation == json.totalResults / 10 && ConsoleKey.RightArrow == key)
+                continue;
+            if (ConsoleKey.LeftArrow == key)
+            {
+                i -= 20;
+                pagenation -= 10;
+            }
+            if (ConsoleKey.RightArrow == key)
+            {
+                i = pagenation;
+                pagenation += 10;
+            }
+
+            if (ConsoleKey.Escape == key)
+                return;
+            
+        }
 
     }
     static void Menu1()
@@ -32,11 +74,12 @@ class Program
         {
             case 1:
             {
+                ByCategory();
+                Menu1();
             } break;
             case 2:
             {
-                ByCategory();
-                Menu1();
+
             } break;
             case 3:
             {

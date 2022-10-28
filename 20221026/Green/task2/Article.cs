@@ -1,4 +1,6 @@
+using System;
 namespace task2;
+
 public class Article
 {
     public Source source { get; set; }
