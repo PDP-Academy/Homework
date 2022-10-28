@@ -321,6 +321,7 @@ namespace task2
             string newUrl = "https://newsapi.org/v2/top-headlines/sources?apiKey=127ae4cb4c7b48c6b55c840fcba43f88";
 
             HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (compatible; AcmeInc/1.0)");
             client.BaseAddress = new Uri(newUrl);
 
             var response = client.GetAsync(newUrl).Result;
