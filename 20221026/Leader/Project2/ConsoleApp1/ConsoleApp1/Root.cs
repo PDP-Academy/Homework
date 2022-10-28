@@ -8,8 +8,8 @@ namespace ConsoleApp1
 {
     public class Root
     {
-        public string status { get; set; }
-        public int totalResults { get; set; }
-        public List<Article> articles { get; set; }
+        public string? Status { get; set; }
+        public int? TotalResults { get; set; }
+        public List<Article> Articles { get; set; }
     }
 }

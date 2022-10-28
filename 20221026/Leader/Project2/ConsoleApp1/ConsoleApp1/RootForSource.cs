@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    public class Source
+    public class RootForSource
     {
-        public string? Id { get; set; }
-        public string? Name { get; set; }
+        public string status { get; set; }
+        public List<Source> sources { get; set; }
     }
 }
