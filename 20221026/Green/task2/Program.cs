@@ -67,7 +67,7 @@ class Program
         System.Console.WriteLine("6.Sports.");
         System.Console.WriteLine("7.Technology.");
         System.Console.WriteLine();
-        System.Console.WriteLine("-->  ");
+        System.Console.Write("-->  ");
         int change = Convert.ToInt32(Console.ReadLine());
 
         string category = "";
