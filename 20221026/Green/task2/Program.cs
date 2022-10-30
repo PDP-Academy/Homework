@@ -219,6 +219,7 @@ namespace task2
             string newUrl = url + category + apiKey;
 
             HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("Mozilla/5.0 (compatible; AcmeInc/1.0)");
             client.BaseAddress = new Uri(newUrl);
 
             var response = client.GetAsync(newUrl).Result;
